@@ -858,6 +858,16 @@ with st.sidebar:
         "✨ AI Search Copilot"
     ]
     
+    # Check if a navigation query parameter was passed (e.g. from Hero buttons or links)
+    if "nav" in st.query_params:
+        target_nav = st.query_params.get("nav", "")
+        if target_nav:
+            st.session_state.selected_view_override = target_nav
+        try:
+            del st.query_params["nav"]
+        except Exception:
+            pass
+
     # Ensure nav choice is initialized or updated from session state before widget creation
     if "selected_view_override" in st.session_state:
         override = st.session_state.pop("selected_view_override")
@@ -1401,11 +1411,11 @@ if current_view == "Campaign Intelligence":
             <div class="hero-logo-title">TriageIQ</div>
         </div>
         <div class="hero-nav-menu">
-            <a href="#operational-dashboard" class="hero-nav-item">Platform</a>
-            <a href="#operational-dashboard" class="hero-nav-item">Evidence Policy</a>
-            <a href="#operational-dashboard" class="hero-nav-item">Intent Clusters</a>
-            <a href="#operational-dashboard" class="hero-nav-item">Audit Trail</a>
-            <a href="#operational-dashboard" class="hero-nav-btn">Analyze Account</a>
+            <a href="#operational-dashboard" onclick="return triageScrollTo('operational-dashboard');" class="hero-nav-item">Platform</a>
+            <a href="#operational-dashboard" onclick="return triageScrollTo('operational-dashboard');" class="hero-nav-item">Evidence Policy</a>
+            <a href="?nav=Intent+Clusters" target="_self" onclick="return triageNavigate('Intent Clusters');" class="hero-nav-item">Intent Clusters</a>
+            <a href="?nav=Google+Ads+Exports" target="_self" onclick="return triageNavigate('Google Ads Exports');" class="hero-nav-item">Audit Trail</a>
+            <a href="#operational-dashboard" onclick="return triageScrollTo('operational-dashboard');" class="hero-nav-btn">Analyze Account</a>
         </div>
     </div>
     
@@ -1428,11 +1438,54 @@ if current_view == "Campaign Intelligence":
         </p>
         
         <div class="hero-actions">
-            <a href="#operational-dashboard" class="hero-btn-primary">Explore Campaign Intelligence ↓</a>
-            <a href="#human-review-callout" class="hero-btn-secondary">Review Flagged Terms ({review_needed_count:,}) ›</a>
+            <a href="#operational-dashboard" onclick="return triageScrollTo('operational-dashboard');" class="hero-btn-primary">Explore Campaign Intelligence ↓</a>
+            <a href="?nav=Human+Review+Queue" target="_self" onclick="return triageNavigate('Human Review Queue');" class="hero-btn-secondary">Review Flagged Terms ({review_needed_count:,}) ›</a>
         </div>
     </div>
 </div>
+<script>
+function triageNavigate(viewName) {{
+    try {{
+        const rootDoc = window.parent ? window.parent.document : document;
+        const labels = Array.from(rootDoc.querySelectorAll('[data-testid="stSidebar"] div[role="radiogroup"] label'));
+        const matched = labels.find(l => l.innerText && l.innerText.includes(viewName));
+        if (matched) {{
+            matched.click();
+            matched.dispatchEvent(new MouseEvent('click', {{ bubbles: true, cancelable: true }}));
+            return false;
+        }}
+    }} catch(err) {{
+        console.warn("DOM click fallback:", err);
+    }}
+    
+    try {{
+        const targetUrl = new URL(window.parent ? window.parent.location.href : window.location.href);
+        targetUrl.searchParams.set("nav", viewName);
+        if (window.parent) {{
+            window.parent.location.href = targetUrl.toString();
+        }} else {{
+            window.location.href = targetUrl.toString();
+        }}
+    }} catch(e) {{
+        window.location.search = "?nav=" + encodeURIComponent(viewName);
+    }}
+    return false;
+}}
+
+function triageScrollTo(elementId) {{
+    try {{
+        const rootDoc = window.parent ? window.parent.document : document;
+        const target = rootDoc.getElementById(elementId) || document.getElementById(elementId);
+        if (target) {{
+            target.scrollIntoView({{ behavior: 'smooth', block: 'start' }});
+            return false;
+        }}
+    }} catch(err) {{
+        console.warn("Scroll target fallback:", err);
+    }}
+    return true;
+}}
+</script>
 <div id="operational-dashboard"></div>"""
     st.html(hero_html)
 
