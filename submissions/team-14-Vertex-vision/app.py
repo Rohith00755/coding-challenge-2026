@@ -330,27 +330,38 @@ st.markdown("""
     }
 
     /* Native Hero Review Button (100% In-Memory State Switch - Zero Web Refresh) */
+    div[data-testid="column"]:has(.hero-review-pill-anchor) button,
+    div[data-testid="column"]:has(.hero-review-pill-anchor) div[data-testid="stButton"] button,
+    div[data-testid="stVerticalBlock"]:has(.hero-review-pill-anchor) button,
     button[key="btn_hero_review_native"],
     div[data-testid="stButton"]:has(> button[key="btn_hero_review_native"]) > button {
-        background-color: transparent !important;
+        background: linear-gradient(135deg, #7928CA 0%, #581C87 100%) !important;
         color: #FFFFFF !important;
         font-size: 0.95rem !important;
         font-weight: 600 !important;
         padding: 12px 30px !important;
         height: 48px !important;
+        min-height: 48px !important;
         border-radius: 30px !important;
         border: 1px solid rgba(255, 255, 255, 0.4) !important;
-        box-shadow: 0 4px 16px rgba(128, 0, 255, 0.25) !important;
+        box-shadow: 0 4px 18px rgba(121, 40, 202, 0.45) !important;
         transition: all 0.2s ease !important;
+        display: flex !important;
+        align-items: center !important;
+        justify-content: center !important;
         width: 100% !important;
+        box-sizing: border-box !important;
     }
+    div[data-testid="column"]:has(.hero-review-pill-anchor) button:hover,
+    div[data-testid="column"]:has(.hero-review-pill-anchor) div[data-testid="stButton"] button:hover,
+    div[data-testid="stVerticalBlock"]:has(.hero-review-pill-anchor) button:hover,
     button[key="btn_hero_review_native"]:hover,
     div[data-testid="stButton"]:has(> button[key="btn_hero_review_native"]) > button:hover {
         border-color: #D5A2FF !important;
-        background-color: rgba(213, 162, 255, 0.12) !important;
-        color: #D5A2FF !important;
+        background: linear-gradient(135deg, #8B5CF6 0%, #6D28D9 100%) !important;
+        color: #FFFFFF !important;
         transform: translateY(-2px) !important;
-        box-shadow: 0 6px 24px rgba(128, 0, 255, 0.5) !important;
+        box-shadow: 0 6px 26px rgba(138, 43, 226, 0.65) !important;
     }
 
     /* Executive Top Header */
@@ -1480,18 +1491,49 @@ if current_view == "Campaign Intelligence":
     col_cta1, col_cta2, col_cta3, col_cta4 = st.columns([1.1, 2.4, 2.4, 1.1])
     with col_cta2:
         st.markdown(
-            """<a href="#operational-dashboard" class="hero-btn-primary" style="display:flex; justify-content:center; align-items:center; width:100%; height:48px; box-sizing:border-box; margin:0 auto; text-align:center;">
+            """<a href="#operational-dashboard" class="hero-btn-primary" style="display:flex; justify-content:center; align-items:center; width:100%; height:48px; border-radius:30px; box-sizing:border-box; margin:0 auto; text-align:center;">
                 Explore Campaign Intelligence ↓
             </a>""",
             unsafe_allow_html=True
         )
     with col_cta3:
+        st.markdown(
+            """<style>
+            div[data-testid="column"]:has(.hero-review-pill-anchor) button {
+                background: linear-gradient(135deg, #7928CA 0%, #581C87 100%) !important;
+                color: #FFFFFF !important;
+                border-radius: 30px !important;
+                height: 48px !important;
+                min-height: 48px !important;
+                padding: 12px 30px !important;
+                font-size: 0.95rem !important;
+                font-weight: 600 !important;
+                border: 1px solid rgba(255, 255, 255, 0.4) !important;
+                box-shadow: 0 4px 18px rgba(121, 40, 202, 0.45) !important;
+                transition: all 0.2s ease !important;
+                display: flex !important;
+                align-items: center !important;
+                justify-content: center !important;
+                width: 100% !important;
+                box-sizing: border-box !important;
+            }
+            div[data-testid="column"]:has(.hero-review-pill-anchor) button:hover {
+                border-color: #D5A2FF !important;
+                background: linear-gradient(135deg, #8B5CF6 0%, #6D28D9 100%) !important;
+                color: #FFFFFF !important;
+                transform: translateY(-2px) !important;
+                box-shadow: 0 6px 26px rgba(138, 43, 226, 0.65) !important;
+            }
+            </style>
+            <div class="hero-review-pill-anchor" style="display:none;"></div>""",
+            unsafe_allow_html=True
+        )
         def _nav_to_rq_hero_native():
             st.session_state.selected_view_override = "Human Review Queue"
             st.session_state.selected_view = "Human Review Queue"
 
         st.button(
-            f"Review Flagged Terms ({review_needed_count:,}) ›",
+            f"Review Flagged Terms ({review_needed_count:,}) →",
             key="btn_hero_review_native",
             on_click=_nav_to_rq_hero_native,
             use_container_width=True
