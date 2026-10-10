@@ -600,19 +600,19 @@ with st.sidebar:
         "✨ AI Search Copilot"
     ]
     
-    # Ensure nav choice is initialized from session state
-    if "nav_radio_choice" not in st.session_state:
-        current_selected = st.session_state.get("selected_view", "Campaign Intelligence")
-        st.session_state.nav_radio_choice = next(
-            (opt for opt in nav_options if current_selected in opt),
-            nav_options[0]
-        )
-    elif "selected_view_override" in st.session_state:
+    # Ensure nav choice is initialized or updated from session state before widget creation
+    if "selected_view_override" in st.session_state:
         override = st.session_state.pop("selected_view_override")
         for opt in nav_options:
             if override in opt:
                 st.session_state.nav_radio_choice = opt
                 break
+    elif "nav_radio_choice" not in st.session_state:
+        current_selected = st.session_state.get("selected_view", "Campaign Intelligence")
+        st.session_state.nav_radio_choice = next(
+            (opt for opt in nav_options if current_selected in opt),
+            nav_options[0]
+        )
             
     chosen_nav = st.radio("Navigation Menu", nav_options, key="nav_radio_choice", label_visibility="collapsed")
     current_view = chosen_nav.split(" ", 1)[1]
@@ -1229,8 +1229,17 @@ if current_view == "Campaign Intelligence":
                 unsafe_allow_html=True
             )
         with col_rev_btn:
-            if st.button(f"👉 Review {review_needed_count:,} Flagged Terms", key="btn_hero_goto_rq", use_container_width=True):
-                st.session_state.nav_radio_choice = "⚠️ Human Review Queue"
+            def _nav_to_rq_hero():
+                st.session_state.selected_view_override = "Human Review Queue"
+                st.session_state.selected_view = "Human Review Queue"
+
+            if st.button(
+                f"👉 Review {review_needed_count:,} Flagged Terms",
+                key="btn_hero_goto_rq",
+                on_click=_nav_to_rq_hero,
+                use_container_width=True
+            ):
+                st.session_state.selected_view_override = "Human Review Queue"
                 st.session_state.selected_view = "Human Review Queue"
                 st.rerun()
 
@@ -1298,8 +1307,17 @@ if current_view == "Campaign Intelligence":
     # Quick Action to open full Review Queue
     col_nav_btn, _ = st.columns([2, 3])
     with col_nav_btn:
-        if st.button(f"👉 Open Full Review Queue ({review_needed_count:,} Flagged Queries)", key="btn_goto_rq_from_ci"):
-            st.session_state.nav_radio_choice = "⚠️ Human Review Queue"
+        def _nav_to_rq_footer():
+            st.session_state.selected_view_override = "Human Review Queue"
+            st.session_state.selected_view = "Human Review Queue"
+
+        if st.button(
+            f"👉 Open Full Review Queue ({review_needed_count:,} Flagged Queries)",
+            key="btn_goto_rq_from_ci",
+            on_click=_nav_to_rq_footer,
+            use_container_width=True
+        ):
+            st.session_state.selected_view_override = "Human Review Queue"
             st.session_state.selected_view = "Human Review Queue"
             st.rerun()
 
