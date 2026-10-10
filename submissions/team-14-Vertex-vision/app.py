@@ -342,24 +342,99 @@ st.markdown("""
     [data-testid="stSidebar"] strong, [data-testid="stSidebar"] h1, [data-testid="stSidebar"] h2, [data-testid="stSidebar"] h3 {
         color: #FFFFFF !important;
     }
+    /* Sidebar Navigation Radio Buttons: Sleek Pill Cards with Instant Smooth Transition */
+    [data-testid="stSidebar"] div[data-testid="stRadio"] {
+        width: 100% !important;
+        margin-top: 4px !important;
+    }
+    [data-testid="stSidebar"] div[role="radiogroup"] {
+        display: flex !important;
+        flex-direction: column !important;
+        gap: 7px !important;
+        width: 100% !important;
+    }
     [data-testid="stSidebar"] div[role="radiogroup"] label {
-        background: transparent;
-        border: 1px solid transparent;
-        border-radius: 8px;
-        padding: 6px 12px;
-        margin-bottom: 2px;
-        transition: all 0.2s ease;
+        display: flex !important;
+        align-items: center !important;
+        width: 100% !important;
+        padding: 10px 14px !important;
+        margin: 0 !important;
+        border-radius: 10px !important;
+        background: rgba(255, 255, 255, 0.03) !important;
+        border: 1px solid rgba(160, 80, 200, 0.20) !important;
+        cursor: pointer !important;
+        position: relative !important;
+        box-shadow: 0 2px 6px rgba(0, 0, 0, 0.25) !important;
+        transition: all 0.2s cubic-bezier(0.2, 0.8, 0.2, 1) !important;
+    }
+    /* Hide native radio button dots */
+    [data-testid="stSidebar"] div[role="radiogroup"] label input[type="radio"] {
+        display: none !important;
+        position: absolute !important;
+        opacity: 0 !important;
+        width: 0 !important;
+        height: 0 !important;
+    }
+    [data-testid="stSidebar"] div[role="radiogroup"] label > div:first-of-type:not([data-testid="stMarkdownContainer"]) {
+        display: none !important;
+    }
+    [data-testid="stSidebar"] div[role="radiogroup"] label div[data-testid="stMarkdownContainer"] {
+        width: 100% !important;
+        display: flex !important;
+        align-items: center !important;
+    }
+    [data-testid="stSidebar"] div[role="radiogroup"] label div[data-testid="stMarkdownContainer"] p {
+        font-size: 0.88rem !important;
+        font-weight: 500 !important;
         color: #D1CBD5 !important;
+        letter-spacing: 0.01em !important;
+        margin: 0 !important;
+        line-height: 1.35 !important;
+        transition: color 0.18s ease !important;
     }
+    /* Hover State */
     [data-testid="stSidebar"] div[role="radiogroup"] label:hover {
-        background: rgba(128, 0, 255, 0.14);
+        background: rgba(128, 0, 255, 0.16) !important;
+        border-color: rgba(213, 162, 255, 0.45) !important;
+        transform: translateX(5px) !important;
+        box-shadow: 0 4px 16px rgba(128, 0, 255, 0.3) !important;
+    }
+    [data-testid="stSidebar"] div[role="radiogroup"] label:hover div[data-testid="stMarkdownContainer"] p {
         color: #FFFFFF !important;
     }
-    [data-testid="stSidebar"] div[role="radiogroup"] label:has(input:checked) {
-        background: rgba(128, 0, 255, 0.24) !important;
-        border: 1px solid rgba(128, 0, 255, 0.5) !important;
+    /* Active / Checked State */
+    [data-testid="stSidebar"] div[role="radiogroup"] label:has(input:checked),
+    [data-testid="stSidebar"] div[role="radiogroup"] label[aria-checked="true"] {
+        background: linear-gradient(135deg, rgba(128, 0, 255, 0.38) 0%, rgba(55, 12, 95, 0.6) 100%) !important;
+        border: 1px solid #A855F7 !important;
+        border-left: 4px solid #D5A2FF !important;
+        transform: translateX(5px) !important;
+        box-shadow: 0 4px 22px rgba(128, 0, 255, 0.42), inset 0 0 12px rgba(128, 0, 255, 0.2) !important;
+    }
+    [data-testid="stSidebar"] div[role="radiogroup"] label:has(input:checked) div[data-testid="stMarkdownContainer"] p,
+    [data-testid="stSidebar"] div[role="radiogroup"] label[aria-checked="true"] div[data-testid="stMarkdownContainer"] p {
         color: #FFFFFF !important;
-        font-weight: 600;
+        font-weight: 700 !important;
+    }
+    /* Click / Active press feedback */
+    [data-testid="stSidebar"] div[role="radiogroup"] label:active {
+        transform: scale(0.97) translateX(3px) !important;
+        transition: transform 0.05s ease !important;
+    }
+
+    /* Smooth page content view transition */
+    .main .block-container {
+        animation: smoothPageFade 0.22s cubic-bezier(0.16, 1, 0.3, 1) !important;
+    }
+    @keyframes smoothPageFade {
+        0% {
+            opacity: 0.72;
+            transform: translateY(5px);
+        }
+        100% {
+            opacity: 1;
+            transform: translateY(0);
+        }
     }
     
     /* Input & Select Controls */
@@ -968,9 +1043,27 @@ def run_triage_pipeline(
     res_df = pd.DataFrame(results)
     return clean_df, clusters_summary, results, res_df
 
-clean_df, clusters_summary, results, res_df = run_triage_pipeline(
-    raw_df, target_cpa, min_clicks, min_convs
-)
+# Instant In-Memory Session Cache for Triage Execution (Bypasses 31MB pickle deserialization on view switches)
+pipeline_cache_key = (dataset_name, len(raw_df), target_cpa, min_clicks, min_convs)
+if (
+    st.session_state.get("_active_pipeline_key") != pipeline_cache_key
+    or "_active_clean_df" not in st.session_state
+):
+    clean_df, clusters_summary, results, res_df = run_triage_pipeline(
+        raw_df, target_cpa, min_clicks, min_convs
+    )
+    st.session_state._active_clean_df = clean_df
+    st.session_state._active_clusters_summary = clusters_summary
+    st.session_state._active_results = results
+    st.session_state._active_res_df = res_df
+    st.session_state._active_pipeline_key = pipeline_cache_key
+    st.session_state.pop("_active_neg_key", None)
+    st.session_state.pop("_active_export_key", None)
+else:
+    clean_df = st.session_state._active_clean_df
+    clusters_summary = st.session_state._active_clusters_summary
+    results = st.session_state._active_results
+    res_df = st.session_state._active_res_df
 
 # Apply active reviewer corrections from session memory with sub-millisecond overhead
 if st.session_state.reviewer_actions:
@@ -990,9 +1083,19 @@ if st.session_state.reviewer_actions:
             res_lookup[q_norm]["confidence"] = "HIGH"
             res_lookup[q_norm]["reason"] = f"Reviewer override: {ov.get('reviewer_notes', 'Analyst verified')}"
 
-# Context-Aware Negative Keyword Suggestions (Enhancement A)
-adv_profile = AdvertiserProfile()
-negative_suggestions = generate_context_aware_negative_suggestions(res_df, adv_profile, target_cpa=target_cpa)
+# Context-Aware Negative Keyword Suggestions (Enhancement A - In-Memory Session Cached)
+neg_cache_key = (dataset_name, len(res_df), target_cpa, len(st.session_state.reviewer_actions))
+if (
+    st.session_state.get("_active_neg_key") != neg_cache_key
+    or "_active_negative_suggestions" not in st.session_state
+):
+    adv_profile = AdvertiserProfile()
+    st.session_state._active_negative_suggestions = generate_context_aware_negative_suggestions(
+        res_df, adv_profile, target_cpa=target_cpa
+    )
+    st.session_state._active_neg_key = neg_cache_key
+
+negative_suggestions = st.session_state._active_negative_suggestions
 for s in negative_suggestions:
     if s["suggestion_id"] in st.session_state.negative_approvals:
         s["analyst_status"] = st.session_state.negative_approvals[s["suggestion_id"]]
@@ -1541,7 +1644,7 @@ if current_view == "Campaign Intelligence":
     if len(sample_showcase) < 4:
         sample_showcase = res_df.head(4).copy()
         
-    for _, sc_row in sample_showcase.iterrows():
+    for sc_row in sample_showcase.to_dict(orient="records"):
         render_evidence_card(sc_row, is_review_queue=False)
         
     # Quick Action to open full Review Queue
@@ -1657,7 +1760,7 @@ elif current_view == "Human Review Queue":
                 
             st.caption(f"Displaying **{min(25, len(filtered_rq))}** of **{len(filtered_rq):,}** queries requiring analyst review:")
             
-            for _, rq_row in filtered_rq.head(25).iterrows():
+            for rq_row in filtered_rq.head(25).to_dict(orient="records"):
                 render_evidence_card(rq_row, is_review_queue=True)
 
 
@@ -1941,12 +2044,21 @@ elif current_view == "Google Ads Exports":
         
         export_dir = "output_kestrel" if selected_source.startswith("Kestrel") else "output"
         corrections_df = st.session_state.precedent_memory.export_to_dataframe()
-        exported_paths = export_triage_results(
-            results, 
-            export_dir,
-            negative_suggestions=negative_suggestions,
-            corrections_df=corrections_df
-        )
+        export_cache_key = (dataset_name, len(results), len(st.session_state.reviewer_actions), len(st.session_state.negative_approvals), selected_source)
+        if (
+            st.session_state.get("_active_export_key") != export_cache_key
+            or "_active_export_paths" not in st.session_state
+        ):
+            exported_paths = export_triage_results(
+                results, 
+                export_dir,
+                negative_suggestions=negative_suggestions,
+                corrections_df=corrections_df
+            )
+            st.session_state._active_export_paths = exported_paths
+            st.session_state._active_export_key = export_cache_key
+        else:
+            exported_paths = st.session_state._active_export_paths
         
         neg_count = len(res_df[res_df["decision"] == "BLOCK"][["campaign", "query_text"]].drop_duplicates())
         prom_count = len(res_df[res_df["decision"] == "PROMOTE"][["campaign", "ad_group", "query_text"]].drop_duplicates())
