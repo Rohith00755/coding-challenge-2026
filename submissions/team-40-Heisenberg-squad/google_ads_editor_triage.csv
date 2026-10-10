@@ -1,0 +1,17 @@
+Campaign,Ad Group,Keyword,Criterion Type,Status,Reason
+Search | Generic Business Loans,Business Loans,instant invoice template reviews,Broad,Paused,Insufficient statistical evidence. Kept in observation.
+Search | SBA Loans,SBA Loans,reliable sba loan requirements calculator,Broad,Paused,Insufficient statistical evidence. Kept in observation.
+Search | Line of Credit,Business Line of Credit,instant revolving business credit new york,Broad,Paused,Insufficient statistical evidence. Kept in observation.
+Search | Equipment Finance,Truck & Vehicle Finance,reliable construction equipment loan approval,Broad,Paused,Insufficient statistical evidence. Kept in observation.
+Search | Generic Business Loans,Small Business Funding,business loans for bad credit florida,Negative Exact,Enabled,Financial bleed: High spend ($338.13) with zero conversions.
+Search | Generic Business Loans - EXACT WINNERS,Startup Funding,apply business loan approval,Exact,Enabled,"Statistically significant performer (Empirical CVR 17.7%, Wilson Lower Bound 20.7%)."
+Search | Generic Business Loans,Startup Funding,apply business loan approval,Negative Exact,Enabled,Search Term Isolation: Negative exact applied to original campaign to prevent cannibalization.
+Search | Line of Credit,Business Line of Credit,business loan vs line of credit same day,Negative Exact,Enabled,Financial bleed: High spend ($55.48) with zero conversions.
+Search | Generic Business Loans,Startup Funding,business loan approval online,Broad,Paused,Insufficient statistical evidence. Kept in observation.
+Search | Generic Business Loans,Business Loans,top invoice template new york,Broad,Paused,Insufficient statistical evidence. Kept in observation.
+Search | Generic Business Loans,Small Business Funding,instant government grants for small business for restaurants,Negative Exact,Enabled,Client does not offer this product/service (Kestrel Business Funding Rule).
+Search | Generic Business Loans,Business Loans,best business loan online for llc,Broad,Paused,Insufficient statistical evidence. Kept in observation.
+Search | Generic Business Loans,Startup Funding,apply credit card offers new york,Negative Exact,Enabled,Client does not offer this product/service (Kestrel Business Funding Rule).
+Search | Merchant Cash Advance,Merchant Cash Advance,merchant funding texas,Broad,Paused,Insufficient statistical evidence. Kept in observation.
+Search | Generic Business Loans,Business Loans,best debt consolidation personal for startups,Negative Exact,Enabled,Client does not offer this product/service (Kestrel Business Funding Rule).
+Search | Generic Business Loans,Business Loans,free business grants with ein only,Negative Exact,Enabled,Client does not offer this product/service (Kestrel Business Funding Rule).

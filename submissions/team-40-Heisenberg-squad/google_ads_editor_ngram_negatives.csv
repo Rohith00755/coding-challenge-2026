@@ -1,0 +1,9 @@
+Campaign,Ad Group,Keyword,Criterion Type,Status,Reason
+Account Level,--,bad,Negative Broad,Enabled,N-Gram Waste: Token 'bad' spent $338.13 account-wide with 0 conversions.
+Account Level,--,for,Negative Broad,Enabled,N-Gram Waste: Token 'for' spent $377.25 account-wide with 0 conversions.
+Account Level,--,loans,Negative Broad,Enabled,N-Gram Waste: Token 'loans' spent $338.13 account-wide with 0 conversions.
+Account Level,--,florida,Negative Broad,Enabled,N-Gram Waste: Token 'florida' spent $338.13 account-wide with 0 conversions.
+Account Level,--,line,Negative Broad,Enabled,N-Gram Waste: Token 'line' spent $55.48 account-wide with 0 conversions.
+Account Level,--,day,Negative Broad,Enabled,N-Gram Waste: Token 'day' spent $55.48 account-wide with 0 conversions.
+Account Level,--,same,Negative Broad,Enabled,N-Gram Waste: Token 'same' spent $55.48 account-wide with 0 conversions.
+Account Level,--,online,Negative Broad,Enabled,N-Gram Waste: Token 'online' spent $50.34 account-wide with 0 conversions.
