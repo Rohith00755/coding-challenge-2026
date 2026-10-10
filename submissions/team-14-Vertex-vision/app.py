@@ -71,6 +71,264 @@ st.markdown("""
         overflow-x: hidden !important;
     }
 
+    html {
+        scroll-behavior: smooth;
+    }
+
+    /* ========================================================= */
+    /* HERO SHOWCASE LANDING SECTION                             */
+    /* ========================================================= */
+    .hero-container {
+        position: relative;
+        background: radial-gradient(circle at 50% 16%, #18051F 0%, #08050D 68%);
+        border: 1px solid rgba(160, 80, 200, 0.22);
+        border-radius: 12px;
+        margin-top: -1.2rem;
+        margin-bottom: 2rem;
+        padding: 24px 40px 65px 40px;
+        overflow: hidden;
+        text-align: center;
+        box-sizing: border-box;
+        box-shadow: 0 12px 48px rgba(8, 5, 13, 0.7);
+        width: 100%;
+    }
+    
+    /* Subtle Purple Ambient Lighting */
+    .hero-ambient-glow {
+        position: absolute;
+        width: 650px;
+        height: 650px;
+        background: radial-gradient(circle, rgba(128, 0, 255, 0.22) 0%, rgba(24, 5, 31, 0.08) 50%, transparent 70%);
+        top: 40px;
+        left: 50%;
+        transform: translateX(-50%);
+        filter: blur(60px);
+        pointer-events: none;
+        z-index: 1;
+    }
+    
+    .hero-ambient-left {
+        position: absolute;
+        width: 450px;
+        height: 450px;
+        background: radial-gradient(circle, rgba(128, 0, 255, 0.14) 0%, transparent 70%);
+        top: 100px;
+        left: 5%;
+        filter: blur(80px);
+        pointer-events: none;
+        z-index: 1;
+    }
+    
+    .hero-ambient-right {
+        position: absolute;
+        width: 450px;
+        height: 450px;
+        background: radial-gradient(circle, rgba(160, 32, 240, 0.14) 0%, transparent 70%);
+        top: 100px;
+        right: 5%;
+        filter: blur(80px);
+        pointer-events: none;
+        z-index: 1;
+    }
+
+    /* Abstract Circular Arc behind Hero Content */
+    .hero-arc-wrapper {
+        position: absolute;
+        top: 115px;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 860px;
+        max-width: 90%;
+        height: 480px;
+        border-radius: 50% 50% 0 0 / 100% 100% 0 0;
+        border-top: 1.5px solid rgba(180, 100, 255, 0.45);
+        border-left: 1px solid rgba(128, 0, 255, 0.22);
+        border-right: 1px solid rgba(128, 0, 255, 0.22);
+        border-bottom: none;
+        box-shadow: 0 -12px 50px rgba(128, 0, 255, 0.35), inset 0 8px 40px rgba(128, 0, 255, 0.16);
+        background: radial-gradient(ellipse at 50% 0%, rgba(128, 0, 255, 0.14) 0%, rgba(24, 5, 31, 0.02) 60%, transparent 80%);
+        pointer-events: none;
+        z-index: 2;
+    }
+
+    /* Transparent Horizontal Navigation at Top */
+    .hero-nav {
+        position: relative;
+        z-index: 10;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 4px 12px 16px 12px;
+    }
+    
+    .hero-logo-box {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        text-decoration: none;
+    }
+    
+    .hero-logo-icon {
+        background: #8000FF;
+        color: #FFFFFF;
+        font-weight: 800;
+        font-size: 0.95rem;
+        width: 32px;
+        height: 32px;
+        border-radius: 7px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        box-shadow: 0 0 16px rgba(128, 0, 255, 0.6);
+        letter-spacing: -0.02em;
+    }
+    
+    .hero-logo-title {
+        color: #FFFFFF;
+        font-size: 1.3rem;
+        font-weight: 700;
+        letter-spacing: -0.02em;
+    }
+    
+    .hero-nav-menu {
+        display: flex;
+        align-items: center;
+        gap: 28px;
+    }
+    
+    .hero-nav-item {
+        color: #D1CBD5 !important;
+        font-size: 0.88rem;
+        font-weight: 500;
+        text-decoration: none !important;
+        transition: color 0.2s ease;
+    }
+    .hero-nav-item:hover {
+        color: #FFFFFF !important;
+    }
+    
+    .hero-nav-btn {
+        background-color: #8000FF;
+        color: #FFFFFF !important;
+        font-weight: 600;
+        font-size: 0.84rem;
+        padding: 8px 22px;
+        border-radius: 24px;
+        text-decoration: none !important;
+        box-shadow: 0 2px 14px rgba(128, 0, 255, 0.45);
+        transition: all 0.2s ease;
+        display: inline-block;
+    }
+    .hero-nav-btn:hover {
+        background-color: #921aff;
+        box-shadow: 0 4px 20px rgba(128, 0, 255, 0.65);
+    }
+    
+    /* Thin Purple Divider below Header */
+    .hero-nav-divider {
+        position: relative;
+        z-index: 10;
+        height: 1px;
+        background-color: rgba(160, 80, 200, 0.18);
+        margin-bottom: 45px;
+    }
+    
+    /* Hero Content Container */
+    .hero-body {
+        position: relative;
+        z-index: 10;
+        max-width: 900px;
+        margin: 0 auto;
+    }
+    
+    /* Lavender Eyebrow Text */
+    .hero-eyebrow {
+        color: #D5A2FF;
+        font-size: 0.82rem;
+        font-weight: 700;
+        letter-spacing: 0.16em;
+        text-transform: uppercase;
+        margin-bottom: 16px;
+        text-shadow: 0 0 16px rgba(213, 162, 255, 0.35);
+    }
+    
+    /* Large Two-Line Headline */
+    .hero-title {
+        color: #FFFFFF;
+        font-size: 3.1rem;
+        font-weight: 800;
+        line-height: 1.15;
+        letter-spacing: -0.03em;
+        margin-top: 0;
+        margin-bottom: 18px;
+    }
+    
+    .hero-title-accent {
+        color: #8000FF;
+        background: linear-gradient(135deg, #A844FF 0%, #8000FF 55%, #6B00D6 100%);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        text-shadow: 0 0 32px rgba(128, 0, 255, 0.4);
+    }
+    
+    /* Muted White-Gray Supporting Description */
+    .hero-desc {
+        color: #D1CBD5;
+        font-size: 1.05rem;
+        line-height: 1.65;
+        max-width: 720px;
+        margin: 0 auto 34px auto;
+        font-weight: 400;
+    }
+    
+    /* Adjacent CTA Buttons */
+    .hero-actions {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 16px;
+        flex-wrap: wrap;
+        margin-top: 6px;
+        margin-bottom: 6px;
+    }
+    
+    .hero-btn-primary {
+        background-color: #FFFFFF !important;
+        color: #08050D !important;
+        font-size: 0.95rem;
+        font-weight: 700;
+        padding: 13px 32px;
+        border-radius: 30px;
+        text-decoration: none !important;
+        box-shadow: 0 4px 22px rgba(255, 255, 255, 0.22);
+        transition: all 0.2s ease;
+        display: inline-block;
+        border: none;
+    }
+    .hero-btn-primary:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 6px 28px rgba(255, 255, 255, 0.35);
+    }
+    
+    .hero-btn-secondary {
+        background-color: transparent !important;
+        color: #FFFFFF !important;
+        font-size: 0.95rem;
+        font-weight: 600;
+        padding: 12px 30px;
+        border-radius: 30px;
+        border: 1px solid rgba(255, 255, 255, 0.35);
+        text-decoration: none !important;
+        transition: all 0.2s ease;
+        display: inline-block;
+    }
+    .hero-btn-secondary:hover {
+        border-color: #D5A2FF;
+        background-color: rgba(213, 162, 255, 0.1) !important;
+        color: #D5A2FF !important;
+        transform: translateY(-2px);
+    }
+
     /* Executive Top Header */
     .top-header {
         background: radial-gradient(circle at 50% 16%, #18051F 0%, #0E0717 100%);
@@ -1128,6 +1386,56 @@ def render_evidence_card(row_data: Any, is_review_queue: bool = False, key_prefi
 # 6. EXECUTIVE HEADER
 # -------------------------------------------------------------
 if current_view == "Campaign Intelligence":
+    # Full-width near-black hero section with deep purple lighting & electric purple accents
+    hero_html = f"""<div class="hero-container">
+    <!-- Subtle Purple Ambient Lighting -->
+    <div class="hero-ambient-glow"></div>
+    <div class="hero-ambient-left"></div>
+    <div class="hero-ambient-right"></div>
+    <div class="hero-arc-wrapper"></div>
+    
+    <!-- 1. Transparent Horizontal Header -->
+    <div class="hero-nav">
+        <div class="hero-logo-box">
+            <div class="hero-logo-icon">IQ</div>
+            <div class="hero-logo-title">TriageIQ</div>
+        </div>
+        <div class="hero-nav-menu">
+            <a href="#operational-dashboard" class="hero-nav-item">Platform</a>
+            <a href="#operational-dashboard" class="hero-nav-item">Evidence Policy</a>
+            <a href="#operational-dashboard" class="hero-nav-item">Intent Clusters</a>
+            <a href="#operational-dashboard" class="hero-nav-item">Audit Trail</a>
+            <a href="#operational-dashboard" class="hero-nav-btn">Analyze Account</a>
+        </div>
+    </div>
+    
+    <!-- Thin Purple Divider below Header -->
+    <div class="hero-nav-divider"></div>
+    
+    <!-- 2. Hero Center Content -->
+    <div class="hero-body">
+        <div class="hero-eyebrow">
+            EVIDENCE-FIRST SEARCH INTELLIGENCE PLATFORM
+        </div>
+        
+        <h1 class="hero-title">
+            Audit Search Term Waste with<br>
+            <span class="hero-title-accent">Statistical Confidence.</span>
+        </h1>
+        
+        <p class="hero-desc">
+            Transform 25,000+ unmanaged search terms into validated exact-match keywords, campaign exclusions, and auditable human-review queues with Wilson confidence bounds and empirical Bayes shrinkage.
+        </p>
+        
+        <div class="hero-actions">
+            <a href="#operational-dashboard" class="hero-btn-primary">Explore Campaign Intelligence ↓</a>
+            <a href="#human-review-callout" class="hero-btn-secondary">Review Flagged Terms ({review_needed_count:,}) ›</a>
+        </div>
+    </div>
+</div>
+<div id="operational-dashboard"></div>"""
+    st.html(hero_html)
+
     top_header_html = f"""<div class="top-header">
     <div>
         <h1 class="header-title">Campaign Intelligence Console</h1>
@@ -1211,6 +1519,7 @@ if current_view == "Campaign Intelligence":
             )
 
     # 4. SEPARATE PROMINENT HUMAN REVIEW REQUIRED CALLOUT
+    st.markdown("<div id='human-review-callout'></div>", unsafe_allow_html=True)
     with st.container(border=True):
         col_rev_info, col_rev_btn = st.columns([3.5, 1.5])
         with col_rev_info:
