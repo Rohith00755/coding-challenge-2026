@@ -2,7 +2,7 @@
 
 [![Python 3.11](https://img.shields.io/badge/Python-3.11-3776AB?logo=python&logoColor=white)](https://www.python.org/)
 [![Streamlit](https://img.shields.io/badge/Streamlit-1.35+-FF4B4B?logo=streamlit&logoColor=white)](https://streamlit.io/)
-[![CI Tests](https://img.shields.io/badge/Unit%20Tests-63%20Passing-brightgreen?logo=github-actions&logoColor=white)](https://github.com/Rohith00755/search-term-triage-engine/actions)
+[![CI Tests](https://img.shields.io/badge/Unit%20Tests-66%20Passing-brightgreen?logo=github-actions&logoColor=white)](https://github.com/Rohith00755/search-term-triage-engine/actions)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![Code Style: Clean](https://img.shields.io/badge/Code%20Style-Production%20Grade-blueviolet)](#)
 
@@ -11,22 +11,44 @@
 
 ---
 
-## 🏛️ Project Architecture & File Organization
+## 🏛️ Project Architecture & Decoupled Stacks
 
-The repository is structured following industry-standard modular separation of concerns. The working execution flow remains 100% intact with dedicated modules for data ingestion, statistical modeling, clustering, negative generation, reporting, and automated testing:
+The repository is cleanly structured into decoupled, modular stacks (**Frontend**, **Backend**, **Core Engine**, **CLI**, **Tests**, and **Exports**), ensuring maximum code clarity for hackathon judges while preserving the working execution flow and Streamlit Community Cloud deployment without downtime:
 
 ```
 search-term-triage-engine/
 │
-├── .github/
-│   └── workflows/
-│       └── ci.yml               # Automated CI test runner (executes all 63 unit tests)
+├── frontend/                    # [FRONTEND STACK] Presentation, Themes & UI Components
+│   ├── __init__.py              # Unified frontend package exports
+│   ├── styles.py                # Enterprise Design System, CSS variables & Dark Plum styling
+│   └── components.py            # Evidence-First UI cards, Wilson CI badges & reviewer actions
 │
-├── .devcontainer/
-│   └── devcontainer.json        # One-click cloud development environment specification
+├── backend/                     # [BACKEND STACK] Decoupled Engine Facade & Public Services
+│   ├── __init__.py              # Unified backend entry point & public API contract
+│   ├── rules.py                 # Multi-tiered business rules & threshold matrix
+│   ├── stats.py                 # Wilson Score intervals & Empirical Bayes shrinkage
+│   ├── copilot.py               # AI PPC Copilot diagnostic brain (38+ intents)
+│   ├── clustering.py            # Near-duplicate search-intent clustering
+│   ├── negatives.py             # Context-aware negative keyword extraction & scoring
+│   ├── learning.py              # Reviewer Precedent Memory & active learning
+│   └── exporter.py              # Google Ads Editor CSV & audit report generator
 │
-├── .streamlit/
-│   └── config.toml              # Executive Dark Mode theme and server configurations
+├── triage_engine/               # [CORE ALGORITHMIC ENGINE] Pure statistical & business logic
+│   ├── __init__.py              # Engine package initialization
+│   ├── rules.py                 # Core TriageEngine logic & AdvertiserProfile configuration
+│   ├── stats.py                 # Closed-form binomial Wilson bounds & Bayes prior
+│   ├── copilot.py               # 38+ specialized query intents with mathematical grounding
+│   ├── clustering.py            # TF-IDF & character n-gram intent grouping
+│   ├── negatives.py             # N-gram token waste scoring & collision risk detection
+│   ├── learning.py              # Levenshtein distance & precedent correction memory
+│   └── exporter.py              # Google Ads Editor CSV formatting
+│
+├── tests/                       # [TEST STACK] 66 automated unit tests (<0.05s execution)
+│   ├── test_architecture.py    # Stack decoupling & backward compatibility verification
+│   ├── test_triage.py           # Core triage engine & Wilson bounds verification
+│   ├── test_copilot.py          # AI Copilot audit reasoning & intent verification
+│   ├── test_copilot_30q.py      # Verification of 38+ specialized PPC query handlers
+│   └── test_enhancements.py     # Intent clustering, precedents & negative scoping
 │
 ├── data/                        # Benchmark and input search-term reports
 │   ├── production_search_terms_25k.csv   # Canonical 25,000-term Kestrel production dataset
@@ -40,26 +62,14 @@ search-term-triage-engine/
 │   ├── negative_keyword_suggestions.csv  # Candidate exclusions with collision risk flags
 │   └── reviewer_corrections_log.csv      # Audit trail of analyst overrides & precedents
 │
-├── tests/                       # 63 automated unit tests (0.045s execution time)
-│   ├── test_triage.py           # Core triage engine & Wilson bounds verification
-│   ├── test_copilot.py          # AI Copilot audit reasoning & intent verification
-│   ├── test_copilot_30q.py      # Verification of 38+ specialized PPC query handlers
-│   └── test_enhancements.py     # Intent clustering, precedents & negative scoping
+├── .github/
+│   └── workflows/
+│       └── ci.yml               # Automated CI test runner (executes all 66 unit tests)
 │
-├── triage_engine/               # Core statistical & policy intelligence engine
-│   ├── __init__.py              # Package entry point
-│   ├── rules.py                 # TriageEngine multi-gate evidence evaluator & advertiser profiles
-│   ├── stats.py                 # Wilson Score intervals & Empirical Bayes shrinkage
-│   ├── copilot.py               # 38-question conversational PPC intelligence brain
-│   ├── clustering.py            # Near-duplicate search-intent clustering algorithm
-│   ├── negatives.py             # Context-aware negative keyword suggestion engine
-│   ├── learning.py              # ReviewerPrecedentMemory session-learning module
-│   └── exporter.py              # Google Ads Editor CSV export generator
-│
-├── app.py                       # Enterprise Streamlit intelligence console (Live Web UI)
+├── app.py                       # Cloud Web UI entry point & orchestrator (Streamlit Cloud compatible)
 ├── run_cli.py                   # High-performance batch CLI pipeline for enterprise runs
 ├── generate_dataset.py          # Synthetic search-term report generator
-├── requirements.txt             # Minimal production dependencies (pure Python, zero C/Fortran compile dependencies)
+├── requirements.txt             # Minimal production dependencies (wheel-only, 0 compiler issues)
 ├── .python-version              # Python 3.11 runtime specification
 ├── run_app.bat                  # 1-click Windows batch launcher
 ├── run_app.ps1                  # 1-click PowerShell launcher
@@ -146,18 +156,19 @@ Evaluated against the 25,000-row Kestrel Business Funding production report (`se
 
 ---
 
-## 🧪 6. Automated Unit Tests (63/63 Passing)
+## 🧪 6. Automated Unit Tests (66/66 Passing)
 
-All **63 unit tests** execute in **0.045 seconds**:
+All **66 unit tests** execute in **0.045 seconds**:
 ```bash
 python -m unittest discover tests -v
 ```
 
 ### Test Suite Breakdown:
-1. **`tests/test_triage.py` (11 tests)**: Wilson confidence intervals, small-sample guardrails, advertiser business policy enforcement, numerical boundary edge cases, output contract field validity.
-2. **`tests/test_copilot.py` (8 tests)**: Row audit lookups, natural language query searches, savings calculations, variance trap explanations, Kestrel boundaries, top winners.
-3. **`tests/test_copilot_30q.py` (38 tests)**: End-to-end verification of all 38 specialized PPC diagnostic queries, intent routing order, and mathematical grounding.
-4. **`tests/test_enhancements.py` (6 tests)**: Near-duplicate clustering, qualifier preservation, decision conflict detection, reviewer precedent memory, negative keyword suggestion scoring.
+1. **`tests/test_architecture.py` (3 tests)**: Verifies decoupled frontend/backend import boundaries, design system exports, and 100% backward compatibility.
+2. **`tests/test_triage.py` (11 tests)**: Wilson confidence intervals, small-sample guardrails, advertiser business policy enforcement, numerical boundary edge cases, output contract field validity.
+3. **`tests/test_copilot.py` (8 tests)**: Row audit lookups, natural language query searches, savings calculations, variance trap explanations, Kestrel boundaries, top winners.
+4. **`tests/test_copilot_30q.py` (38 tests)**: End-to-end verification of all 38 specialized PPC diagnostic queries, intent routing order, and mathematical grounding.
+5. **`tests/test_enhancements.py` (6 tests)**: Near-duplicate clustering, qualifier preservation, decision conflict detection, reviewer precedent memory, negative keyword suggestion scoring.
 
 ---
 
