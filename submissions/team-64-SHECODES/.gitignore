@@ -1,0 +1,4 @@
+__pycache__/
+audit_log.csv
+.venv/
+.DS_Store
