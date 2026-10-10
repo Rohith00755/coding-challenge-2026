@@ -854,7 +854,7 @@ if "chat_history" not in st.session_state:
     st.session_state.chat_history = [
         {
             "role": "assistant",
-            "content": "👋 **Hello! I'm your TriageIQ Personal AI Copilot.** I am trained across **38+ specialized search-term diagnostic questions** including Wilson statistical confidence bounds, Empirical Bayes shrinkage, Kestrel commercial loan policies, spend bleeder elimination, and Google Ads Editor export workflows.\n\nPick any question from the **📚 38+ Question Library** above or ask anything in plain English!"
+            "content": "👋 **Hello! I'm your TriageIQ Personal AI Copilot.** I analyze all 25,000 search terms, Wilson statistical confidence bounds, and Kestrel commercial policies in real time.\n\nAsk me about any query (e.g. *'Audit row #6'* or *'Check equipment loan'*), cost savings calculations, small-sample noise rules, or policy thresholds!"
         }
     ]
 # Dataset Paths (Relative with fallback)
@@ -2535,70 +2535,10 @@ elif current_view == "AI Search Copilot":
                     st.session_state.chat_history = [
                         {
                             "role": "assistant",
-                            "content": "👋 Chat reset! Ask me any of our 38+ trained search questions below or type your query!"
+                            "content": "👋 Chat reset! Ask me about any query (e.g. *'Audit row #6'*), savings calculations, or Kestrel policies!"
                         }
                     ]
                     st.rerun()
-
-            # 38+ Trained Questions Library Expander
-            with st.expander("📚 Explore All 38+ Pre-Trained Questions by Category", expanded=False):
-                q_categories = {
-                    "📊 Executive & Financial ROI": [
-                        "How much wasted spend can we save?",
-                        "Give me an account summary of total spend and volume",
-                        "What is our account baseline CPA?",
-                        "Show decision breakdown across the portfolio",
-                        "How many terms are in the human review queue?"
-                    ],
-                    "🔬 Statistical Rigor & Methodology": [
-                        "Why are terms with 1 conversion quarantined in review?",
-                        "How does the Wilson confidence interval work?",
-                        "Explain Empirical Bayes shrinkage",
-                        "Explain the strict 3-way decision contract",
-                        "How does the decision engine work?"
-                    ],
-                    "🛡️ Kestrel Lending Policies": [
-                        "What are Kestrel negative policy boundaries?",
-                        "Explain the 220 Target CPA ceiling",
-                        "Why are personal loans and mortgages blocked?",
-                        "Why block government grant queries?",
-                        "Why exclude jobs and salary searches?",
-                        "Why are templates and pdf downloads excluded?"
-                    ],
-                    "🚀 Top Winners & Bleeders": [
-                        "Show me top promoted winners",
-                        "Show biggest bleeders with zero conversions",
-                        "Which are the most efficient campaigns?",
-                        "Which are the least efficient campaigns with high CPA?",
-                        "How much spend was wasted on zero conversion queries?",
-                        "Analyze low CTR high impression terms"
-                    ],
-                    "⚙️ Match Types, Bids & Scope": [
-                        "Show match type performance breakdown",
-                        "Explain internal keyword cannibalization",
-                        "Which are the top ad groups by spend?",
-                        "How is the proposed Max CPC bid calculated?",
-                        "Explain the narrowest scope rule for negatives",
-                        "What is over-exclusion risk and collateral damage?"
-                    ],
-                    "📥 Workflow & Google Ads Exports": [
-                        "How are candidate negative suggestions generated?",
-                        "What is the Google Ads export CSV format?",
-                        "How do I import negative keywords into Google Ads Editor?",
-                        "How does search intent clustering work?",
-                        "Why do decision conflicts occur in a cluster?",
-                        "How does session learning from reviewer precedents work?"
-                    ]
-                }
-                
-                cat_col, q_col = st.columns([1.2, 2.3])
-                with cat_col:
-                    selected_cat = st.selectbox("Category", list(q_categories.keys()), key="copilot_cat_sel")
-                with q_col:
-                    selected_q = st.selectbox("Trained Question", q_categories[selected_cat], key="copilot_q_sel")
-                
-                if st.button("💬 Ask This Question", key="btn_ask_trained_q", use_container_width=True):
-                    dedicated_prompt = selected_q
 
             if dedicated_prompt:
                 st.session_state.chat_history.append({"role": "user", "content": dedicated_prompt})
