@@ -1217,7 +1217,7 @@ elif current_view == "Google Ads Exports":
             unsafe_allow_html=True
         )
         
-        export_dir = "output_kestrel" if selected_source.startswith("Kestrel") else "output"
+        export_dir = "output"
         corrections_df = st.session_state.precedent_memory.export_to_dataframe()
         export_cache_key = (dataset_name, len(results), len(st.session_state.reviewer_actions), len(st.session_state.negative_approvals), selected_source)
         if (
