@@ -366,18 +366,28 @@ st.markdown("""
         position: relative !important;
         box-shadow: 0 2px 6px rgba(0, 0, 0, 0.25) !important;
         transition: all 0.2s cubic-bezier(0.2, 0.8, 0.2, 1) !important;
+        pointer-events: auto !important;
+        user-select: none !important;
     }
-    /* Hide native radio input element */
+    /* Hide native radio input element visually without breaking DOM click dispatch */
     [data-testid="stSidebar"] div[role="radiogroup"] label input[type="radio"] {
-        display: none !important;
         position: absolute !important;
         opacity: 0 !important;
-        width: 0 !important;
-        height: 0 !important;
+        width: 1px !important;
+        height: 1px !important;
+        margin: -1px !important;
+        padding: 0 !important;
+        border: 0 !important;
+        clip: rect(0 0 0 0) !important;
+        pointer-events: none !important;
     }
     /* Hide ONLY the circular radio dot */
     [data-testid="stSidebar"] div[role="radiogroup"] label > div > div:first-child:not([data-testid="stMarkdownContainer"]) {
         display: none !important;
+    }
+    /* Pass all clicks through children directly to the interactive label card */
+    [data-testid="stSidebar"] div[role="radiogroup"] label * {
+        pointer-events: none !important;
     }
     /* Label wrapper div should display flex to align text nicely */
     [data-testid="stSidebar"] div[role="radiogroup"] label > div {
@@ -869,15 +879,21 @@ with st.sidebar:
         "✨ AI Search Copilot"
     ]
     
-    # Track current view index
-    current_selected = st.session_state.get("selected_view", "Campaign Intelligence")
-    default_index = 0
-    for idx, opt in enumerate(nav_options):
-        if current_selected in opt:
-            default_index = idx
-            break
+    # Ensure nav choice is initialized from session state
+    if "nav_radio_choice" not in st.session_state:
+        current_selected = st.session_state.get("selected_view", "Campaign Intelligence")
+        st.session_state.nav_radio_choice = next(
+            (opt for opt in nav_options if current_selected in opt),
+            nav_options[0]
+        )
+    elif "selected_view_override" in st.session_state:
+        override = st.session_state.pop("selected_view_override")
+        for opt in nav_options:
+            if override in opt:
+                st.session_state.nav_radio_choice = opt
+                break
             
-    chosen_nav = st.radio("Navigation Menu", nav_options, index=default_index, label_visibility="collapsed")
+    chosen_nav = st.radio("Navigation Menu", nav_options, key="nav_radio_choice", label_visibility="collapsed")
     current_view = chosen_nav.split(" ", 1)[1]
     st.session_state.selected_view = current_view
     
@@ -1673,6 +1689,7 @@ if current_view == "Campaign Intelligence":
     col_nav_btn, _ = st.columns([2, 3])
     with col_nav_btn:
         if st.button(f"👉 Open Full Review Queue ({review_needed_count:,} Flagged Queries)", key="btn_goto_rq_from_ci"):
+            st.session_state.nav_radio_choice = "⚠️ Human Review Queue"
             st.session_state.selected_view = "Human Review Queue"
             st.rerun()
 
