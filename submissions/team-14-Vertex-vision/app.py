@@ -329,6 +329,30 @@ st.markdown("""
         transform: translateY(-2px);
     }
 
+    /* Native Hero Review Button (100% In-Memory State Switch - Zero Web Refresh) */
+    button[key="btn_hero_review_native"],
+    div[data-testid="stButton"]:has(> button[key="btn_hero_review_native"]) > button {
+        background-color: transparent !important;
+        color: #FFFFFF !important;
+        font-size: 0.95rem !important;
+        font-weight: 600 !important;
+        padding: 12px 30px !important;
+        height: 48px !important;
+        border-radius: 30px !important;
+        border: 1px solid rgba(255, 255, 255, 0.4) !important;
+        box-shadow: 0 4px 16px rgba(128, 0, 255, 0.25) !important;
+        transition: all 0.2s ease !important;
+        width: 100% !important;
+    }
+    button[key="btn_hero_review_native"]:hover,
+    div[data-testid="stButton"]:has(> button[key="btn_hero_review_native"]) > button:hover {
+        border-color: #D5A2FF !important;
+        background-color: rgba(213, 162, 255, 0.12) !important;
+        color: #D5A2FF !important;
+        transform: translateY(-2px) !important;
+        box-shadow: 0 6px 24px rgba(128, 0, 255, 0.5) !important;
+    }
+
     /* Executive Top Header */
     .top-header {
         background: radial-gradient(circle at 50% 16%, #18051F 0%, #0E0717 100%);
@@ -891,18 +915,29 @@ with st.sidebar:
     # Collapsible Settings & Data Controls (Keeps sidebar clean)
     with st.expander("⚙️ Settings & Policy Parameters", expanded=True):
         st.markdown("<p style='font-size:0.75rem; font-weight:700; color:#D5A2FF; text-transform:uppercase; margin-bottom:6px;'>Active Dataset</p>", unsafe_allow_html=True)
-        source_options = ["📁 Upload Custom CSV"]
+        source_options = []
         if os.path.exists(PRODUCTION_DATA_PATH):
+            source_options.append("Kestrel Business Funding (90-Day Production Report)")
+        elif os.path.exists(fallback_prod_path):
             source_options.append("Kestrel Business Funding (90-Day Production Report)")
         if os.path.exists(sample_data_path):
             source_options.append("🧪 Standard Benchmark (25k)")
+        source_options.append("📁 Upload Custom CSV")
             
+        if "active_dataset_selection" not in st.session_state:
+            st.session_state.active_dataset_selection = source_options[0]
+
+        if "selected_source_override" in st.session_state:
+            override_val = st.session_state.pop("selected_source_override")
+            if override_val in source_options:
+                st.session_state.active_dataset_selection = override_val
+
         default_idx = 0
-        if "selected_source_override" in st.session_state and st.session_state.selected_source_override in source_options:
-            default_idx = source_options.index(st.session_state.selected_source_override)
-            del st.session_state["selected_source_override"]
+        if st.session_state.active_dataset_selection in source_options:
+            default_idx = source_options.index(st.session_state.active_dataset_selection)
             
-        selected_source = st.selectbox("Select Dataset", source_options, index=default_idx)
+        selected_source = st.selectbox("Select Dataset", source_options, index=default_idx, key="sidebar_dataset_choice")
+        st.session_state.active_dataset_selection = selected_source
         
         if selected_source == "📁 Upload Custom CSV":
             uploaded_file = st.file_uploader("Upload Search Terms CSV", type=["csv"], key="sidebar_csv_uploader", label_visibility="collapsed")
@@ -1028,6 +1063,7 @@ if raw_df is None:
         st.markdown("<div style='text-align: center; margin: 18px 0 10px 0; color: #A79BB3; font-size: 0.8rem; font-weight: 600;'>— OR BENCHMARK DATASET —</div>", unsafe_allow_html=True)
         if st.button("🚀 Load 25,000-Row Production Benchmark", key="btn_quick_load_bench", use_container_width=True):
             st.session_state.selected_source_override = "Kestrel Business Funding (90-Day Production Report)"
+            st.session_state.active_dataset_selection = "Kestrel Business Funding (90-Day Production Report)"
             st.rerun()
             
     if raw_df is None:
@@ -1397,12 +1433,12 @@ def render_evidence_card(row_data: Any, is_review_queue: bool = False, key_prefi
 # -------------------------------------------------------------
 if current_view == "Campaign Intelligence":
     # Full-width near-black hero section with deep purple lighting & electric purple accents
-    hero_html = f"""<div class="hero-container">
+    hero_html = f"""<div class="hero-container" style="margin-bottom: 0px; padding-bottom: 18px;">
     <!-- Subtle Purple Ambient Lighting -->
     <div class="hero-ambient-glow"></div>
     <div class="hero-ambient-left"></div>
     <div class="hero-ambient-right"></div>
-    <div class="hero-arc-wrapper"></div>
+    <div class="hero-arc-wrapper" style="height: 520px;"></div>
     
     <!-- 1. Transparent Horizontal Header -->
     <div class="hero-nav">
@@ -1411,11 +1447,11 @@ if current_view == "Campaign Intelligence":
             <div class="hero-logo-title">TriageIQ</div>
         </div>
         <div class="hero-nav-menu">
-            <a href="#operational-dashboard" onclick="return triageScrollTo('operational-dashboard');" class="hero-nav-item">Platform</a>
-            <a href="#operational-dashboard" onclick="return triageScrollTo('operational-dashboard');" class="hero-nav-item">Evidence Policy</a>
-            <a href="?nav=Intent+Clusters" target="_self" onclick="return triageNavigate('Intent Clusters');" class="hero-nav-item">Intent Clusters</a>
-            <a href="?nav=Google+Ads+Exports" target="_self" onclick="return triageNavigate('Google Ads Exports');" class="hero-nav-item">Audit Trail</a>
-            <a href="#operational-dashboard" onclick="return triageScrollTo('operational-dashboard');" class="hero-nav-btn">Analyze Account</a>
+            <a href="#operational-dashboard" class="hero-nav-item">Platform</a>
+            <a href="#operational-dashboard" class="hero-nav-item">Evidence Policy</a>
+            <a href="#operational-dashboard" class="hero-nav-item">Intent Clusters</a>
+            <a href="#operational-dashboard" class="hero-nav-item">Audit Trail</a>
+            <a href="#operational-dashboard" class="hero-nav-btn">Analyze Account</a>
         </div>
     </div>
     
@@ -1436,58 +1472,32 @@ if current_view == "Campaign Intelligence":
         <p class="hero-desc">
             Transform 25,000+ unmanaged search terms into validated exact-match keywords, campaign exclusions, and auditable human-review queues with Wilson confidence bounds and empirical Bayes shrinkage.
         </p>
-        
-        <div class="hero-actions">
-            <a href="#operational-dashboard" onclick="return triageScrollTo('operational-dashboard');" class="hero-btn-primary">Explore Campaign Intelligence ↓</a>
-            <a href="?nav=Human+Review+Queue" target="_self" onclick="return triageNavigate('Human Review Queue');" class="hero-btn-secondary">Review Flagged Terms ({review_needed_count:,}) ›</a>
-        </div>
     </div>
-</div>
-<script>
-function triageNavigate(viewName) {{
-    try {{
-        const rootDoc = window.parent ? window.parent.document : document;
-        const labels = Array.from(rootDoc.querySelectorAll('[data-testid="stSidebar"] div[role="radiogroup"] label'));
-        const matched = labels.find(l => l.innerText && l.innerText.includes(viewName));
-        if (matched) {{
-            matched.click();
-            matched.dispatchEvent(new MouseEvent('click', {{ bubbles: true, cancelable: true }}));
-            return false;
-        }}
-    }} catch(err) {{
-        console.warn("DOM click fallback:", err);
-    }}
-    
-    try {{
-        const targetUrl = new URL(window.parent ? window.parent.location.href : window.location.href);
-        targetUrl.searchParams.set("nav", viewName);
-        if (window.parent) {{
-            window.parent.location.href = targetUrl.toString();
-        }} else {{
-            window.location.href = targetUrl.toString();
-        }}
-    }} catch(e) {{
-        window.location.search = "?nav=" + encodeURIComponent(viewName);
-    }}
-    return false;
-}}
-
-function triageScrollTo(elementId) {{
-    try {{
-        const rootDoc = window.parent ? window.parent.document : document;
-        const target = rootDoc.getElementById(elementId) || document.getElementById(elementId);
-        if (target) {{
-            target.scrollIntoView({{ behavior: 'smooth', block: 'start' }});
-            return false;
-        }}
-    }} catch(err) {{
-        console.warn("Scroll target fallback:", err);
-    }}
-    return true;
-}}
-</script>
-<div id="operational-dashboard"></div>"""
+</div>"""
     st.html(hero_html)
+
+    # 3. Hero Centered Action Buttons (100% In-Memory Streamlit Transition - ZERO Web Refresh)
+    col_cta1, col_cta2, col_cta3, col_cta4 = st.columns([1.1, 2.4, 2.4, 1.1])
+    with col_cta2:
+        st.markdown(
+            """<a href="#operational-dashboard" class="hero-btn-primary" style="display:flex; justify-content:center; align-items:center; width:100%; height:48px; box-sizing:border-box; margin:0 auto; text-align:center;">
+                Explore Campaign Intelligence ↓
+            </a>""",
+            unsafe_allow_html=True
+        )
+    with col_cta3:
+        def _nav_to_rq_hero_native():
+            st.session_state.selected_view_override = "Human Review Queue"
+            st.session_state.selected_view = "Human Review Queue"
+
+        st.button(
+            f"Review Flagged Terms ({review_needed_count:,}) ›",
+            key="btn_hero_review_native",
+            on_click=_nav_to_rq_hero_native,
+            use_container_width=True
+        )
+
+    st.markdown("<div id='operational-dashboard' style='height: 20px;'></div>", unsafe_allow_html=True)
 
     top_header_html = f"""<div class="top-header">
     <div>
