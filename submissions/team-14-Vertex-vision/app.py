@@ -57,256 +57,87 @@ st.markdown("""
     }
     
     /* ========================================================= */
-    /* TATVIC-STYLE HERO LANDING SECTION (Near-Black & Deep Purple) */
+    /* TRIAGEIQ RESTRAINED DARK PLUM DESIGN SYSTEM               */
     /* ========================================================= */
-    .hero-container {
-        position: relative;
-        background: radial-gradient(circle at 50% 16%, #18051F 0%, #08050D 68%);
+    
+    /* Responsive Content Container & Max-Width */
+    .main .block-container {
+        max-width: 1360px !important;
+        margin: 0 auto !important;
+        padding-top: 1.25rem !important;
+        padding-bottom: 2.5rem !important;
+        padding-left: 1.5rem !important;
+        padding-right: 1.5rem !important;
+        overflow-x: hidden !important;
+    }
+
+    /* Executive Top Header */
+    .top-header {
+        background: radial-gradient(circle at 50% 16%, #18051F 0%, #0E0717 100%);
         border: 1px solid rgba(160, 80, 200, 0.22);
-        border-radius: 12px;
-        margin-top: -1.2rem;
-        margin-bottom: 2rem;
-        padding: 24px 40px 65px 40px;
-        overflow: hidden;
-        text-align: center;
-        box-sizing: border-box;
-        box-shadow: 0 12px 48px rgba(8, 5, 13, 0.7);
-    }
-    
-    /* Subtle Purple Ambient Lighting */
-    .hero-ambient-glow {
-        position: absolute;
-        width: 650px;
-        height: 650px;
-        background: radial-gradient(circle, rgba(128, 0, 255, 0.22) 0%, rgba(24, 5, 31, 0.08) 50%, transparent 70%);
-        top: 40px;
-        left: 50%;
-        transform: translateX(-50%);
-        filter: blur(60px);
-        pointer-events: none;
-        z-index: 1;
-    }
-    
-    .hero-ambient-left {
-        position: absolute;
-        width: 450px;
-        height: 450px;
-        background: radial-gradient(circle, rgba(128, 0, 255, 0.14) 0%, transparent 70%);
-        top: 100px;
-        left: 5%;
-        filter: blur(80px);
-        pointer-events: none;
-        z-index: 1;
-    }
-    
-    .hero-ambient-right {
-        position: absolute;
-        width: 450px;
-        height: 450px;
-        background: radial-gradient(circle, rgba(160, 32, 240, 0.14) 0%, transparent 70%);
-        top: 100px;
-        right: 5%;
-        filter: blur(80px);
-        pointer-events: none;
-        z-index: 1;
-    }
-
-    /* Abstract Circular Arc behind Hero Content */
-    .hero-arc-wrapper {
-        position: absolute;
-        top: 115px;
-        left: 50%;
-        transform: translateX(-50%);
-        width: 860px;
-        max-width: 90%;
-        height: 480px;
-        border-radius: 50% 50% 0 0 / 100% 100% 0 0;
-        border-top: 1.5px solid rgba(180, 100, 255, 0.45);
-        border-left: 1px solid rgba(128, 0, 255, 0.22);
-        border-right: 1px solid rgba(128, 0, 255, 0.22);
-        border-bottom: none;
-        box-shadow: 0 -12px 50px rgba(128, 0, 255, 0.35), inset 0 8px 40px rgba(128, 0, 255, 0.16);
-        background: radial-gradient(ellipse at 50% 0%, rgba(128, 0, 255, 0.14) 0%, rgba(24, 5, 31, 0.02) 60%, transparent 80%);
-        pointer-events: none;
-        z-index: 2;
-    }
-
-    /* Transparent Horizontal Navigation at Top */
-    .hero-nav {
-        position: relative;
-        z-index: 10;
+        border-radius: 10px;
+        padding: 16px 22px;
+        margin-top: -1rem;
+        margin-bottom: 1.25rem;
         display: flex;
         justify-content: space-between;
         align-items: center;
-        padding: 4px 12px 16px 12px;
-    }
-    
-    .hero-logo-box {
-        display: flex;
-        align-items: center;
-        gap: 10px;
-        text-decoration: none;
-    }
-    
-    .hero-logo-icon {
-        background: #8000FF;
-        color: #FFFFFF;
-        font-weight: 800;
-        font-size: 0.95rem;
-        width: 32px;
-        height: 32px;
-        border-radius: 7px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        box-shadow: 0 0 16px rgba(128, 0, 255, 0.6);
-        letter-spacing: -0.02em;
-    }
-    
-    .hero-logo-title {
-        color: #FFFFFF;
-        font-size: 1.3rem;
-        font-weight: 700;
-        letter-spacing: -0.02em;
-    }
-    
-    .hero-nav-menu {
-        display: flex;
-        align-items: center;
-        gap: 28px;
-    }
-    
-    .hero-nav-item {
-        color: #D1CBD5 !important;
-        font-size: 0.88rem;
-        font-weight: 500;
-        text-decoration: none !important;
-        transition: color 0.2s ease;
-    }
-    .hero-nav-item:hover {
-        color: #FFFFFF !important;
-    }
-    
-    .hero-nav-btn {
-        background-color: #8000FF;
-        color: #FFFFFF !important;
-        font-weight: 600;
-        font-size: 0.84rem;
-        padding: 8px 22px;
-        border-radius: 24px;
-        text-decoration: none !important;
-        box-shadow: 0 2px 14px rgba(128, 0, 255, 0.45);
-        transition: all 0.2s ease;
-        display: inline-block;
-    }
-    .hero-nav-btn:hover {
-        background-color: #921aff;
-        box-shadow: 0 4px 20px rgba(128, 0, 255, 0.65);
-    }
-    
-    /* Thin Purple Divider below Header */
-    .hero-nav-divider {
-        position: relative;
-        z-index: 10;
-        height: 1px;
-        background-color: rgba(160, 80, 200, 0.18);
-        margin-bottom: 45px;
-    }
-    
-    /* Hero Content Container */
-    .hero-body {
-        position: relative;
-        z-index: 10;
-        max-width: 900px;
-        margin: 0 auto;
-    }
-    
-    /* Lavender Eyebrow Text */
-    .hero-eyebrow {
-        color: #D5A2FF;
-        font-size: 0.82rem;
-        font-weight: 700;
-        letter-spacing: 0.16em;
-        text-transform: uppercase;
-        margin-bottom: 16px;
-        text-shadow: 0 0 16px rgba(213, 162, 255, 0.35);
-    }
-    
-    /* Large Two-Line Headline */
-    .hero-title {
-        color: #FFFFFF;
-        font-size: 3.1rem;
-        font-weight: 800;
-        line-height: 1.15;
-        letter-spacing: -0.03em;
-        margin-top: 0;
-        margin-bottom: 18px;
-    }
-    
-    .hero-title-accent {
-        color: #8000FF;
-        background: linear-gradient(135deg, #A844FF 0%, #8000FF 55%, #6B00D6 100%);
-        -webkit-background-clip: text;
-        -webkit-text-fill-color: transparent;
-        text-shadow: 0 0 32px rgba(128, 0, 255, 0.4);
-    }
-    
-    /* Muted White-Gray Supporting Description */
-    .hero-desc {
-        color: #D1CBD5;
-        font-size: 1.05rem;
-        line-height: 1.65;
-        max-width: 720px;
-        margin: 0 auto 34px auto;
-        font-weight: 400;
-    }
-    
-    /* Adjacent CTA Buttons */
-    .hero-actions {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        gap: 16px;
         flex-wrap: wrap;
-        margin-top: 6px;
-        margin-bottom: 6px;
+        gap: 12px;
+        box-shadow: 0 4px 16px rgba(0, 0, 0, 0.35);
     }
-    
-    .hero-btn-primary {
-        background-color: #FFFFFF !important;
-        color: #08050D !important;
-        font-size: 0.95rem;
+    .header-title {
+        font-size: 1.4rem;
         font-weight: 700;
-        padding: 13px 32px;
-        border-radius: 30px;
-        text-decoration: none !important;
-        box-shadow: 0 4px 22px rgba(255, 255, 255, 0.22);
-        transition: all 0.2s ease;
-        display: inline-block;
-        border: none;
+        color: #FFFFFF;
+        letter-spacing: -0.02em;
+        margin: 0;
     }
-    .hero-btn-primary:hover {
-        transform: translateY(-2px);
-        box-shadow: 0 6px 28px rgba(255, 255, 255, 0.35);
+    .header-subtitle {
+        font-size: 0.86rem;
+        color: #D1CBD5;
+        margin-top: 3px;
+        margin-bottom: 0;
+        line-height: 1.4;
     }
-    
-    .hero-btn-secondary {
-        background-color: transparent !important;
-        color: #FFFFFF !important;
-        font-size: 0.95rem;
+    .status-badge {
+        display: inline-flex;
+        align-items: center;
+        background-color: rgba(16, 185, 129, 0.16);
+        color: #34D399;
+        border: 1px solid rgba(160, 80, 200, 0.22);
+        border: 1px solid rgba(16, 185, 129, 0.38);
+        border-radius: 6px;
+        padding: 4px 10px;
+        font-size: 0.78rem;
         font-weight: 600;
-        padding: 12px 30px;
-        border-radius: 30px;
-        border: 1px solid rgba(255, 255, 255, 0.35);
-        text-decoration: none !important;
-        transition: all 0.2s ease;
-        display: inline-block;
+        letter-spacing: 0.02em;
     }
-    .hero-btn-secondary:hover {
-        border-color: #D5A2FF;
-        background-color: rgba(213, 162, 255, 0.1) !important;
-        color: #D5A2FF !important;
-        transform: translateY(-2px);
+
+    /* Primary KPI & Summary Cards */
+    .kpi-card {
+        background-color: #12091B;
+        border: 1px solid rgba(160, 80, 200, 0.22);
+        border-radius: 10px;
+        padding: 14px 18px;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+    }
+    .kpi-title {
+        font-size: 0.75rem;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 0.04em;
+        margin-bottom: 4px;
+    }
+    .kpi-value {
+        font-size: 1.85rem;
+        font-weight: 700;
+        color: #FFFFFF;
+        line-height: 1.15;
+    }
+    .kpi-sub {
+        font-size: 0.75rem;
+        margin-top: 4px;
     }
     
     /* Global Container & Card Overrides */
@@ -481,44 +312,6 @@ st.markdown("""
         box-shadow: 0 0 10px rgba(128, 0, 255, 0.45) !important;
     }
     
-    /* Top Header Bar */
-    .top-header {
-        background: radial-gradient(circle at 50% 16%, #18051F 0%, #0E0717 100%);
-        border: 1px solid rgba(160, 80, 200, 0.25);
-        border-radius: 10px;
-        padding: 18px 24px;
-        margin-top: -1.2rem;
-        margin-bottom: 1.4rem;
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        box-shadow: 0 4px 24px rgba(8, 5, 13, 0.5);
-    }
-    .header-title {
-        font-size: 1.45rem;
-        font-weight: 700;
-        color: #FFFFFF;
-        letter-spacing: -0.02em;
-        margin: 0;
-    }
-    .header-subtitle {
-        font-size: 0.88rem;
-        color: #D1CBD5;
-        margin-top: 3px;
-        margin-bottom: 0;
-    }
-    .status-badge {
-        display: inline-flex;
-        align-items: center;
-        background-color: rgba(16, 185, 129, 0.16);
-        color: #34D399;
-        border: 1px solid rgba(16, 185, 129, 0.38);
-        border-radius: 6px;
-        padding: 4px 10px;
-        font-size: 0.78rem;
-        font-weight: 600;
-    }
-    
     /* Brand Mark in Sidebar */
     .brand-mark {
         display: flex;
@@ -599,40 +392,6 @@ st.markdown("""
         box-shadow: 0 2px 14px rgba(128, 0, 255, 0.3) !important;
     }
     
-    /* ========================================================= */
-    /* PERSONAL AI COPILOT FLOATING BUTTON & POPUP MODAL STYLES  */
-    /* ========================================================= */
-    div.st-key-floating_copilot_btn {
-        position: fixed !important;
-        bottom: 28px !important;
-        right: 32px !important;
-        z-index: 999999 !important;
-        margin: 0 !important;
-        padding: 0 !important;
-    }
-    div.st-key-floating_copilot_btn > button {
-        background: linear-gradient(135deg, #8000FF 0%, #4B0099 100%) !important;
-        color: #FFFFFF !important;
-        border: 1px solid rgba(213, 162, 255, 0.45) !important;
-        border-radius: 30px !important;
-        padding: 12px 24px !important;
-        font-size: 0.94rem !important;
-        font-weight: 700 !important;
-        letter-spacing: 0.01em !important;
-        box-shadow: 0 8px 32px rgba(128, 0, 255, 0.55), 0 0 15px rgba(128, 0, 255, 0.3) !important;
-        cursor: pointer !important;
-        display: flex !important;
-        align-items: center !important;
-        gap: 8px !important;
-        transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1) !important;
-    }
-    div.st-key-floating_copilot_btn > button:hover {
-        transform: translateY(-3px) scale(1.05) !important;
-        box-shadow: 0 12px 38px rgba(128, 0, 255, 0.75), 0 0 25px rgba(213, 162, 255, 0.5) !important;
-        border-color: #D5A2FF !important;
-        background: linear-gradient(135deg, #931AFF 0%, #5B00B3 100%) !important;
-    }
-
     /* Modal Dialog Overrides */
     div[data-baseweb="modal"] > div, div[role="dialog"] {
         background-color: #0E0717 !important;
@@ -770,6 +529,40 @@ def parse_csv_file(file_obj) -> Optional[pd.DataFrame]:
         pass
 
     return None
+
+def validate_uploaded_dataset(df: pd.DataFrame) -> Dict[str, Any]:
+    """
+    Validates required columns, numeric formats, missing data, and invalid rows.
+    """
+    if df is None or df.empty:
+        return {"valid": False, "message": "Dataset is empty."}
+    
+    total_rows = len(df)
+    cols = [str(c).strip().lower() for c in df.columns]
+    
+    # Required Query Column
+    has_query = any(any(k in c for k in ["query", "search term", "keyword", "term"]) for c in cols)
+    
+    # Key Metrics
+    has_clicks = any("click" in c for c in cols)
+    has_cost = any(any(k in c for k in ["cost", "spend"]) for c in cols)
+    has_convs = any("conv" in c for c in cols)
+    
+    # Missing / Invalid row check
+    null_rows = int(df.isnull().all(axis=1).sum())
+    valid_rows = total_rows - null_rows
+    
+    return {
+        "valid": has_query and valid_rows > 0,
+        "total_rows": total_rows,
+        "valid_rows": valid_rows,
+        "null_rows": null_rows,
+        "has_query": has_query,
+        "has_clicks": has_clicks,
+        "has_cost": has_cost,
+        "has_convs": has_convs,
+        "columns_detected": list(df.columns)
+    }
 if "chat_history" not in st.session_state:
     st.session_state.chat_history = [
         {
@@ -777,78 +570,6 @@ if "chat_history" not in st.session_state:
             "content": "👋 **Hello! I'm your TriageIQ Personal AI Copilot.** I analyze all 25,000 search terms, Wilson statistical confidence bounds, and Kestrel commercial policies in real time.\n\nAsk me about any query (e.g. *'Audit row #6'* or *'Check equipment loan'*), cost savings calculations, small-sample noise rules, or policy thresholds!"
         }
     ]
-if "show_copilot" not in st.session_state:
-    st.session_state.show_copilot = False
-
-def on_dismiss_copilot():
-    st.session_state.show_copilot = False
-
-@st.dialog("✨ TriageIQ Personal AI Copilot", width="large", on_dismiss=on_dismiss_copilot)
-def render_copilot_modal(res_df: pd.DataFrame, clean_df: pd.DataFrame, target_cpa: float = 220.0):
-    st.markdown("""
-    <div style='background: radial-gradient(circle at 50% 0%, #1E082D 0%, #0E0717 100%); border: 1px solid rgba(160, 80, 200, 0.3); border-radius: 10px; padding: 14px 18px; margin-bottom: 12px;'>
-        <div style='display: flex; justify-content: space-between; align-items: center;'>
-            <div style='font-size: 1.15rem; font-weight: 700; color: #FFFFFF;'>🤖 Personal Search-Term Copilot</div>
-            <div style='background: rgba(16, 185, 129, 0.15); border: 1px solid rgba(16, 185, 129, 0.4); color: #34D399; font-size: 0.75rem; font-weight: 600; padding: 3px 10px; border-radius: 20px;'>🟢 Online · 25,000 Terms Grounded</div>
-        </div>
-        <div style='font-size: 0.83rem; color: #D1CBD5; margin-top: 5px; line-height: 1.4;'>
-            Real-time statistical triage assistant. Inspect any search query, calculate recoverable media waste, or evaluate Wilson score confidence bounds.
-        </div>
-    </div>
-    """, unsafe_allow_html=True)
-
-    # Quick Starter Prompts
-    st.markdown("<div style='font-size: 0.76rem; font-weight: 700; color: #D5A2FF; text-transform: uppercase; letter-spacing: 0.04em; margin-bottom: 6px;'>💡 Instant Starter Prompts</div>", unsafe_allow_html=True)
-    p1, p2, p3 = st.columns(3)
-    p4, p5, p6 = st.columns(3)
-    
-    prompt_clicked = None
-    with p1:
-        if st.button("🔍 Audit Row #6", key="modal_p_r6", use_container_width=True):
-            prompt_clicked = "Audit Row #6"
-    with p2:
-        if st.button("💰 Calculate Cost Savings", key="modal_p_savings", use_container_width=True):
-            prompt_clicked = "How much wasted spend can we save?"
-    with p3:
-        if st.button("⚠️ Why 1 Conv is Quarantined", key="modal_p_noise", use_container_width=True):
-            prompt_clicked = "Why is 1 conversion quarantined in review?"
-    with p4:
-        if st.button("🚀 Top Promoted Keywords", key="modal_p_prom", use_container_width=True):
-            prompt_clicked = "Show me top promoted keywords"
-    with p5:
-        if st.button("🎯 Explain Kestrel CPA Rules", key="modal_p_kestrel", use_container_width=True):
-            prompt_clicked = "Explain Kestrel advertiser policy and CPA ceiling"
-    with p6:
-        if st.button("🗑️ Reset Chat", key="modal_p_reset", use_container_width=True):
-            st.session_state.chat_history = [
-                {
-                    "role": "assistant",
-                    "content": "👋 Chat reset! Ask me anything about any search term (e.g. *'Audit row #6'* or *'Check equipment loans'*), budget savings, or policy rules!"
-                }
-            ]
-            st.rerun()
-
-    if prompt_clicked:
-        st.session_state.chat_history.append({"role": "user", "content": prompt_clicked})
-        ans = generate_copilot_response(prompt_clicked, res_df, clean_df, target_cpa=target_cpa)
-        st.session_state.chat_history.append({"role": "assistant", "content": ans})
-        st.rerun()
-
-    st.markdown("<hr style='border:none; border-top: 1px solid rgba(160, 80, 200, 0.22); margin: 12px 0;'>", unsafe_allow_html=True)
-
-    chat_box = st.container(height=340)
-    with chat_box:
-        for msg in st.session_state.chat_history:
-            with st.chat_message(msg["role"]):
-                st.markdown(msg["content"])
-
-    user_query = st.chat_input("Ask about any query, row #, savings, or policy rule...", key="modal_chat_input")
-    if user_query:
-        st.session_state.chat_history.append({"role": "user", "content": user_query})
-        ans = generate_copilot_response(user_query, res_df, clean_df, target_cpa=target_cpa)
-        st.session_state.chat_history.append({"role": "assistant", "content": ans})
-        st.rerun()
-
 # Dataset Paths (Relative with fallback)
 local_prod_path = os.path.join(os.path.dirname(__file__), "data", "production_search_terms_25k.csv")
 fallback_prod_path = r"C:\Users\richr\Downloads\Srishti-2K26-Datasets-All\PS-01_search_term_triage_dataset\PS-01_search_term_triage\search_terms_report.csv"
@@ -897,26 +618,11 @@ with st.sidebar:
     current_view = chosen_nav.split(" ", 1)[1]
     st.session_state.selected_view = current_view
     
-    st.markdown("""
-    <div style='background: radial-gradient(circle at 50% 0%, #1E0B30 0%, #10061A 100%); border: 1px solid rgba(160, 80, 200, 0.35); border-radius: 10px; padding: 12px; margin-top: 14px; margin-bottom: 8px;'>
-        <div style='display:flex; align-items:center; gap:8px;'>
-            <div style='font-size:1.25rem;'>✨</div>
-            <div>
-                <div style='font-weight:700; font-size:0.86rem; color:#FFFFFF;'>Personal AI Copilot</div>
-                <div style='font-size:0.72rem; color:#D5A2FF;'>Grounded in 25,000 queries</div>
-            </div>
-        </div>
-    </div>
-    """, unsafe_allow_html=True)
-    if st.button("💬 Pop Up AI Copilot", key="sidebar_copilot_modal_btn", use_container_width=True):
-        st.session_state.show_copilot = True
-        st.rerun()
-    
-    st.markdown("---")
+    st.markdown("<div style='height: 8px;'></div>", unsafe_allow_html=True)
     
     # Collapsible Settings & Data Controls (Keeps sidebar clean)
     with st.expander("⚙️ Settings & Policy Parameters", expanded=True):
-        st.markdown("<p style='font-size:0.75rem; font-weight:700; color:#D5A2FF; text-transform:uppercase; margin-bottom:6px;'>Data Source</p>", unsafe_allow_html=True)
+        st.markdown("<p style='font-size:0.75rem; font-weight:700; color:#D5A2FF; text-transform:uppercase; margin-bottom:6px;'>Active Dataset</p>", unsafe_allow_html=True)
         source_options = ["📁 Upload Custom CSV"]
         if os.path.exists(PRODUCTION_DATA_PATH):
             source_options.append("Kestrel Business Funding (90-Day Production Report)")
@@ -936,57 +642,65 @@ with st.sidebar:
                 if st.session_state.custom_csv_name != uploaded_file.name or st.session_state.custom_csv_df is None:
                     parsed_df = parse_csv_file(uploaded_file)
                     if parsed_df is not None:
-                        st.session_state.custom_csv_df = parsed_df
-                        st.session_state.custom_csv_name = uploaded_file.name
-                        st.rerun()
+                        v_res = validate_uploaded_dataset(parsed_df)
+                        if v_res["valid"]:
+                            st.session_state.custom_csv_df = parsed_df
+                            st.session_state.custom_csv_name = uploaded_file.name
+                            st.rerun()
+                        else:
+                            st.error("⚠️ Invalid CSV: missing query column.")
+                    else:
+                        st.error("⚠️ Could not parse CSV.")
                         
             if st.session_state.custom_csv_df is not None:
+                v_res = validate_uploaded_dataset(st.session_state.custom_csv_df)
                 st.markdown(f"""<div style='font-size:0.74rem; color:#D1CBD5; margin-top:4px; margin-bottom:6px; padding:6px 10px; background:rgba(52,211,153,0.1); border:1px solid rgba(52,211,153,0.25); border-radius:6px;'>
-                    Loaded: <strong style='color:#34D399;'>{st.session_state.custom_csv_name or 'Uploaded File'}</strong> ({len(st.session_state.custom_csv_df):,} rows)
+                    Loaded: <strong style='color:#34D399;'>{st.session_state.custom_csv_name or 'Uploaded File'}</strong> ({v_res['valid_rows']:,} rows)<br>
+                    <span style='color:#AFA8B8;'>Validated ✓ ({v_res['valid_rows']:,} rows ready)</span>
                 </div>""", unsafe_allow_html=True)
                 if st.button("🗑️ Clear / Upload Different File", key="btn_sidebar_clear_csv", use_container_width=True):
                     st.session_state.custom_csv_df = None
                     st.session_state.custom_csv_name = None
                     st.rerun()
             
-        st.markdown("<p style='font-size:0.75rem; font-weight:700; color:#D5A2FF; text-transform:uppercase; margin-top:12px; margin-bottom:6px;'>Evidence & CPA Policy</p>", unsafe_allow_html=True)
+        # Advanced Policy Thresholds nested inside an expander
+        with st.expander("🔧 Advanced Policy Thresholds", expanded=False):
+            st.caption("Adjust statistical confidence and CPA gating parameters:")
+            target_cpa = st.number_input(
+                "Target CPA Ceiling ($)",
+                min_value=10.0,
+                max_value=1000.0,
+                value=220.0,
+                step=10.0,
+                help="Maximum allowable cost per loan conversion for Kestrel."
+            )
+            
+            min_clicks = st.slider(
+                "Min Clicks (Evidence Gate)",
+                min_value=5,
+                max_value=30,
+                value=10,
+                help="Minimum statistical sample required before query promotion is considered."
+            )
+            
+            min_convs = st.slider(
+                "Min Conversions",
+                min_value=1,
+                max_value=5,
+                value=2,
+                help="Single conversions are quarantined as variance noise."
+            )
+            
+            confidence_level = st.selectbox(
+                "Wilson Confidence Level",
+                [0.90, 0.95, 0.99],
+                index=1,
+                help="Two-sided binomial confidence interval bound level."
+            )
         
-        target_cpa = st.number_input(
-            "Target CPA Ceiling ($)",
-            min_value=10.0,
-            max_value=1000.0,
-            value=220.0,
-            step=10.0,
-            help="Derived from account economics. Caps allowable cost per conversion."
-        )
-        
-        min_clicks = st.slider(
-            "Min Clicks (Evidence Gate)",
-            min_value=5,
-            max_value=30,
-            value=10,
-            help="Explicit minimum evidence requirement before promotion is considered."
-        )
-        
-        min_convs = st.slider(
-            "Min Conversions",
-            min_value=1,
-            max_value=5,
-            value=2,
-            help="Single conversions are treated as potential variance noise."
-        )
-        
-        confidence_level = st.selectbox(
-            "Wilson Confidence Level",
-            [0.90, 0.95, 0.99],
-            index=1,
-            help="Asymmetric binomial confidence bounds."
-        )
-        
-        st.html("""<div style="font-size: 0.74rem; color: #D1CBD5; line-height: 1.4; margin-top: 10px; padding: 10px; background-color: #150C22; border: 1px solid rgba(160, 80, 200, 0.25); border-radius: 8px;">
-    <strong style="color: #FFFFFF;">Advertiser Boundaries:</strong><br>
-    <em style="color: #D5A2FF;">Kestrel Business Funding</em><br>
-    Exclusions: Personal loans, mortgages, car loans, student loans, grants, jobs.
+        st.html("""<div style="font-size: 0.74rem; color: #D1CBD5; line-height: 1.4; margin-top: 10px; padding: 8px 10px; background-color: #150C22; border: 1px solid rgba(160, 80, 200, 0.22); border-radius: 8px;">
+    <strong style="color: #FFFFFF;">Policy Scope:</strong> <span style="color: #D5A2FF;">Commercial Lending</span><br>
+    Exclusions: Personal loans, mortgages, auto, student loans, jobs.
 </div>""")
 
 # -------------------------------------------------------------
@@ -1032,9 +746,14 @@ if raw_df is None:
             if st.session_state.custom_csv_name != main_upload.name or st.session_state.custom_csv_df is None:
                 parsed_df = parse_csv_file(main_upload)
                 if parsed_df is not None:
-                    st.session_state.custom_csv_df = parsed_df
-                    st.session_state.custom_csv_name = main_upload.name
-                    st.rerun()
+                    v_res = validate_uploaded_dataset(parsed_df)
+                    if v_res["valid"]:
+                        st.session_state.custom_csv_df = parsed_df
+                        st.session_state.custom_csv_name = main_upload.name
+                        st.success(f"✓ Validated: {main_upload.name} ({v_res['valid_rows']:,} rows ready)")
+                        st.rerun()
+                    else:
+                        st.error("⚠️ Invalid CSV: Could not detect a search term or query column.")
                 else:
                     st.error("⚠️ Could not parse search terms from this file. Please verify it is a valid CSV.")
             
@@ -1229,15 +948,14 @@ def render_evidence_card(row_data: Any, is_review_queue: bool = False, key_prefi
                 unsafe_allow_html=True
             )
             
-        # 2. METRICS ROW (Compact, responsive flex row)
+        # 2. METRICS ROW (Compact, responsive flex row focused on core economics)
         st.markdown(
-            f"<div style='font-size:0.79rem; color:#D1CBD5; background-color:#0E0716; padding:6px 14px; border-radius:6px; margin-top:8px; margin-bottom:8px; border:1px solid rgba(160, 80, 200, 0.22); display:flex; flex-wrap:wrap; gap:16px; align-items:center;'>"
+            f"<div style='font-size:0.81rem; color:#D1CBD5; background-color:#0E0716; padding:7px 14px; border-radius:6px; margin-top:8px; margin-bottom:8px; border:1px solid rgba(160, 80, 200, 0.22); display:flex; flex-wrap:wrap; gap:18px; align-items:center;'>"
             f"<span>Clicks: <strong style='color:#FFFFFF;'>{clicks:,}</strong></span>"
             f"<span>Spend: <strong style='color:#FFFFFF;'>${cost:,.2f}</strong></span>"
             f"<span>Conversions: <strong style='color:#FFFFFF;'>{int(conversions):,}</strong></span>"
             f"<span>Attributed Value: <strong style='color:#FFFFFF;'>${conv_val:,.2f}</strong></span>"
             f"<span>CPA: <strong style='color:#FFFFFF;'>{cpa_str}</strong></span>"
-            f"<span>Wilson 95% CI: <strong style='color:#FFFFFF;'>{ci_str}</strong></span>"
             f"</div>",
             unsafe_allow_html=True
         )
@@ -1251,8 +969,15 @@ def render_evidence_card(row_data: Any, is_review_queue: bool = False, key_prefi
             unsafe_allow_html=True
         )
         
-        # 4. ADDITIONAL EVIDENCE (Compact, Expandable Section)
-        with st.expander("🔎 Supporting Evidence, Limitations & Action Plan", expanded=False):
+        # 4. ADDITIONAL EVIDENCE (Compact, Expandable Section with Wilson Bounds)
+        with st.expander("🔎 Statistical Bounds, Supporting Evidence & Action Plan", expanded=False):
+            st.markdown(
+                f"<div style='margin-bottom:8px; font-size:0.81rem; color:#D1CBD5; padding:6px 12px; background:rgba(128, 0, 255, 0.08); border-radius:6px; border:1px solid rgba(160, 80, 200, 0.2);'>"
+                f"<strong>Wilson 95% Confidence Interval:</strong> <strong style='color:#FFFFFF;'>{ci_str}</strong> "
+                f"<span style='color:#AFA8B8;'>&nbsp;(Estimated true binomial conversion rate bound accounting for sample volume)</span>"
+                f"</div>",
+                unsafe_allow_html=True
+            )
             col_supp, col_count = st.columns(2)
             with col_supp:
                 st.markdown(
@@ -1333,7 +1058,7 @@ def render_evidence_card(row_data: Any, is_review_queue: bool = False, key_prefi
                         st.toast(f"✓ Applied precedent: '{query_text}' -> {precedent['revised_decision']}!", icon="⚡")
                         st.rerun()
             else:
-                b1, b2, b3 = st.columns([1.5, 1.5, 3])
+                b1, b2, b3 = st.columns(3)
                 
             with b1:
                 if st.button("✅ Approve Promotion", key=f"btn_prom_{key_prefix}_{row_id}", use_container_width=True):
@@ -1378,7 +1103,7 @@ def render_evidence_card(row_data: Any, is_review_queue: bool = False, key_prefi
                     st.toast(f"✓ '{query_text}' updated to BLOCK in session memory!", icon="🚫")
                     st.rerun()
             with b3:
-                if st.button("💤 Dismiss (Keep Ignored)", key=f"btn_dsm_{key_prefix}_{row_id}", use_container_width=True):
+                if st.button("💤 Keep Ignored", key=f"btn_dsm_{key_prefix}_{row_id}", use_container_width=True):
                     notes = "Analyst dismissed to maintain status quo."
                     st.session_state.reviewer_actions[query_text.lower().strip()] = {
                         "reviewer_action": "DISMISSED_IGNORE",
@@ -1400,60 +1125,9 @@ def render_evidence_card(row_data: Any, is_review_queue: bool = False, key_prefi
                     st.rerun()
 
 # -------------------------------------------------------------
-# 6. TOP HEADER & TATVIC HERO RENDERING
+# 6. EXECUTIVE HEADER
 # -------------------------------------------------------------
 if current_view == "Campaign Intelligence":
-    # Full-width near-black hero section with deep purple lighting & electric purple accents
-    hero_html = f"""<div class="hero-container">
-    <!-- Subtle Purple Ambient Lighting -->
-    <div class="hero-ambient-glow"></div>
-    <div class="hero-ambient-left"></div>
-    <div class="hero-ambient-right"></div>
-    <div class="hero-arc-wrapper"></div>
-    
-    <!-- 1. Transparent Horizontal Header -->
-    <div class="hero-nav">
-        <div class="hero-logo-box">
-            <div class="hero-logo-icon">IQ</div>
-            <div class="hero-logo-title">TriageIQ</div>
-        </div>
-        <div class="hero-nav-menu">
-            <a href="#operational-dashboard" class="hero-nav-item">Platform</a>
-            <a href="#operational-dashboard" class="hero-nav-item">Evidence Policy</a>
-            <a href="#operational-dashboard" class="hero-nav-item">Intent Clusters</a>
-            <a href="#operational-dashboard" class="hero-nav-item">Audit Trail</a>
-            <a href="#operational-dashboard" class="hero-nav-btn">Analyze Account</a>
-        </div>
-    </div>
-    
-    <!-- Thin Purple Divider below Header -->
-    <div class="hero-nav-divider"></div>
-    
-    <!-- 2. Hero Center Content -->
-    <div class="hero-body">
-        <div class="hero-eyebrow">
-            EVIDENCE-FIRST SEARCH INTELLIGENCE PLATFORM
-        </div>
-        
-        <h1 class="hero-title">
-            Audit Search Term Waste with<br>
-            <span class="hero-title-accent">Statistical Confidence.</span>
-        </h1>
-        
-        <p class="hero-desc">
-            Transform 25,000+ unmanaged search terms into validated exact-match keywords, campaign exclusions, and auditable human-review queues with Wilson confidence bounds and empirical Bayes shrinkage.
-        </p>
-        
-        <div class="hero-actions">
-            <a href="#operational-dashboard" class="hero-btn-primary">Explore Campaign Intelligence ↓</a>
-            <a href="#operational-dashboard" class="hero-btn-secondary">Review Flagged Terms ({review_needed_count:,}) ›</a>
-        </div>
-    </div>
-</div>
-<div id="operational-dashboard"></div>"""
-    st.html(hero_html)
-    
-    # Clean white section beginning immediately below the hero
     top_header_html = f"""<div class="top-header">
     <div>
         <h1 class="header-title">Campaign Intelligence Console</h1>
@@ -1461,15 +1135,14 @@ if current_view == "Campaign Intelligence":
             Understand search-term performance, identify opportunities, and surface decisions that need human judgment.
         </p>
     </div>
-    <div style="display:flex; align-items:center; gap:12px;">
+    <div style="display:flex; align-items:center; gap:12px; flex-wrap:wrap;">
         <span class="status-badge">✓ Validated ({total_queries:,} terms)</span>
-        <span style="font-size:0.82rem; color:#68736B; font-weight:500;">Dataset: <strong>{dataset_name}</strong></span>
+        <span style="font-size:0.82rem; color:#D1CBD5; font-weight:500;">Dataset: <strong style="color:#FFFFFF;">{dataset_name}</strong></span>
     </div>
 </div>"""
-    st.html(top_header_html)
+    st.markdown(top_header_html, unsafe_allow_html=True)
 
 else:
-    # Standard enterprise top header for workspace views
     workspace_header_html = f"""<div class="top-header">
     <div>
         <h1 class="header-title">{current_view}</h1>
@@ -1477,12 +1150,12 @@ else:
             TriageIQ Enterprise Campaign Optimization Suite · {current_view}
         </p>
     </div>
-    <div style="display:flex; align-items:center; gap:12px;">
+    <div style="display:flex; align-items:center; gap:12px; flex-wrap:wrap;">
         <span class="status-badge">✓ Validated ({total_queries:,} terms)</span>
-        <span style="font-size:0.82rem; color:#68736B; font-weight:500;">Dataset: <strong>{dataset_name}</strong></span>
+        <span style="font-size:0.82rem; color:#D1CBD5; font-weight:500;">Dataset: <strong style="color:#FFFFFF;">{dataset_name}</strong></span>
     </div>
 </div>"""
-    st.html(workspace_header_html)
+    st.markdown(workspace_header_html, unsafe_allow_html=True)
 
 
 # =============================================================
@@ -1490,16 +1163,16 @@ else:
 # =============================================================
 if current_view == "Campaign Intelligence":
     
-    # B. Five Compact KPI Cards (Mutually Exclusive Contract + Human Review Overlay)
-    k1, k2, k3, k4, k5 = st.columns(5)
+    # 3. FOUR PRIMARY KPI CARDS (Strict Mutually Exclusive Contract)
+    k1, k2, k3, k4 = st.columns(4)
     
     with k1:
         with st.container(border=True):
             st.markdown(
                 "<div style='border-left:4px solid #8000FF; padding-left:10px;'>"
-                "<div style='font-size:0.75rem; font-weight:700; color:#D5A2FF; text-transform:uppercase; letter-spacing:0.04em;'>Total Queries</div>"
-                f"<div style='font-size:1.75rem; font-weight:700; color:#FFFFFF; line-height:1.15; margin-top:2px;'>{total_queries:,}</div>"
-                "<div style='font-size:0.75rem; color:#D1CBD5; margin-top:4px;'>100% Ingested</div>"
+                "<div style='font-size:0.75rem; font-weight:700; color:#D5A2FF; text-transform:uppercase; letter-spacing:0.04em;'>Total Search Terms</div>"
+                f"<div style='font-size:1.85rem; font-weight:700; color:#FFFFFF; line-height:1.15; margin-top:2px;'>{total_queries:,}</div>"
+                "<div style='font-size:0.75rem; color:#D1CBD5; margin-top:4px;'>100% Ingested & Evaluated</div>"
                 "</div>",
                 unsafe_allow_html=True
             )
@@ -1509,8 +1182,8 @@ if current_view == "Campaign Intelligence":
             st.markdown(
                 "<div style='border-left:4px solid #10B981; padding-left:10px;'>"
                 "<div style='font-size:0.75rem; font-weight:700; color:#34D399; text-transform:uppercase; letter-spacing:0.04em;'>Promote</div>"
-                f"<div style='font-size:1.75rem; font-weight:700; color:#FFFFFF; line-height:1.15; margin-top:2px;'>{promoted_count:,}</div>"
-                f"<div style='font-size:0.75rem; color:#34D399; margin-top:4px;'><strong>{promoted_count/total_queries:.1%}</strong> · Exact Match</div>"
+                f"<div style='font-size:1.85rem; font-weight:700; color:#FFFFFF; line-height:1.15; margin-top:2px;'>{promoted_count:,}</div>"
+                f"<div style='font-size:0.75rem; color:#34D399; margin-top:4px;'><strong>{promoted_count/total_queries:.1%}</strong> · Exact Match Additions</div>"
                 "</div>",
                 unsafe_allow_html=True
             )
@@ -1520,8 +1193,8 @@ if current_view == "Campaign Intelligence":
             st.markdown(
                 "<div style='border-left:4px solid #EF4444; padding-left:10px;'>"
                 "<div style='font-size:0.75rem; font-weight:700; color:#F87171; text-transform:uppercase; letter-spacing:0.04em;'>Block</div>"
-                f"<div style='font-size:1.75rem; font-weight:700; color:#FFFFFF; line-height:1.15; margin-top:2px;'>{blocked_count:,}</div>"
-                f"<div style='font-size:0.75rem; color:#F87171; margin-top:4px;'><strong>{blocked_count/total_queries:.1%}</strong> · Negative Match</div>"
+                f"<div style='font-size:1.85rem; font-weight:700; color:#FFFFFF; line-height:1.15; margin-top:2px;'>{blocked_count:,}</div>"
+                f"<div style='font-size:0.75rem; color:#F87171; margin-top:4px;'><strong>{blocked_count/total_queries:.1%}</strong> · Negative Exclusions</div>"
                 "</div>",
                 unsafe_allow_html=True
             )
@@ -1531,76 +1204,40 @@ if current_view == "Campaign Intelligence":
             st.markdown(
                 "<div style='border-left:4px solid #9CA3AF; padding-left:10px;'>"
                 "<div style='font-size:0.75rem; font-weight:700; color:#D1CBD5; text-transform:uppercase; letter-spacing:0.04em;'>Ignore</div>"
-                f"<div style='font-size:1.75rem; font-weight:700; color:#FFFFFF; line-height:1.15; margin-top:2px;'>{ignored_count:,}</div>"
-                f"<div style='font-size:0.75rem; color:#AFA8B8; margin-top:4px;'><strong>{ignored_count/total_queries:.1%}</strong> · Status Quo</div>"
-                "</div>",
-                unsafe_allow_html=True
-            )
-            
-    with k5:
-        with st.container(border=True):
-            st.markdown(
-                "<div style='border-left:4px solid #F59E0B; padding-left:10px;'>"
-                "<div style='font-size:0.75rem; font-weight:700; color:#FBBF24; text-transform:uppercase; letter-spacing:0.04em;'>Human Review</div>"
-                f"<div style='font-size:1.75rem; font-weight:700; color:#FFFFFF; line-height:1.15; margin-top:2px;'>{review_needed_count:,}</div>"
-                f"<div style='font-size:0.75rem; color:#FBBF24; margin-top:4px;'><strong>{review_needed_count/total_queries:.1%}</strong> · Flagged Overlay</div>"
+                f"<div style='font-size:1.85rem; font-weight:700; color:#FFFFFF; line-height:1.15; margin-top:2px;'>{ignored_count:,}</div>"
+                f"<div style='font-size:0.75rem; color:#AFA8B8; margin-top:4px;'><strong>{ignored_count/total_queries:.1%}</strong> · Maintain Status Quo</div>"
                 "</div>",
                 unsafe_allow_html=True
             )
 
-    # C. Compact Financial Summary (Defensible Accounting Terminology)
+    # 4. SEPARATE PROMINENT HUMAN REVIEW REQUIRED CALLOUT
     with st.container(border=True):
-        fin_col1, fin_col2, fin_col3 = st.columns(3)
-        with fin_col1:
+        col_rev_info, col_rev_btn = st.columns([3.5, 1.5])
+        with col_rev_info:
             st.markdown(
-                "<div>"
-                "<div style='font-size:0.75rem; font-weight:700; color:#D1CBD5; text-transform:uppercase;'>Historical Spend Associated with Blocked Terms</div>"
-                f"<div style='font-size:1.35rem; font-weight:700; color:#F87171; margin-top:2px;'>${historical_blocked_spend:,.2f}</div>"
-                "<div style='font-size:0.76rem; color:#AFA8B8;'>Potential future spend reduction by excluding off-target and bleeder queries.</div>"
-                "</div>",
+                f"<div style='display:flex; align-items:center; gap:12px;'>"
+                f"<div style='font-size:1.8rem; line-height:1;'>⚠️</div>"
+                f"<div>"
+                f"<div style='font-size:1.12rem; font-weight:700; color:#FBBF24;'>"
+                f"Human Review Required: <span style='color:#FFFFFF;'>{review_needed_count:,} Search Terms</span> ({review_needed_count/total_queries:.1%})"
+                f"</div>"
+                f"<div style='font-size:0.83rem; color:#D1CBD5; margin-top:3px;'>"
+                f"Quarantined due to small-sample conversion noise (1–2 convs), borderline spend bleeders, or conflicting intent signals."
+                f"</div>"
+                f"</div>"
+                f"</div>",
                 unsafe_allow_html=True
             )
-        with fin_col2:
-            st.markdown(
-                "<div>"
-                "<div style='font-size:0.75rem; font-weight:700; color:#D1CBD5; text-transform:uppercase;'>Attributed Conversion Value</div>"
-                f"<div style='font-size:1.35rem; font-weight:700; color:#34D399; margin-top:2px;'>${attributed_promoted_val:,.2f}</div>"
-                f"<div style='font-size:0.76rem; color:#AFA8B8;'>Gross application value across {attributed_promoted_conv:,} conversions from promoted terms.</div>"
-                "</div>",
-                unsafe_allow_html=True
-            )
-        with fin_col3:
-            st.markdown(
-                "<div>"
-                "<div style='font-size:0.75rem; font-weight:700; color:#D1CBD5; text-transform:uppercase;'>Account Baseline CPA</div>"
-                f"<div style='font-size:1.35rem; font-weight:700; color:#FFFFFF; margin-top:2px;'>${clean_df['cost'].sum() / max(1.0, clean_df['conversions'].sum()):,.2f}</div>"
-                "<div style='font-size:0.76rem; color:#AFA8B8;'>Weighted account cost per loan conversion across active campaigns.</div>"
-                "</div>",
-                unsafe_allow_html=True
-            )
+        with col_rev_btn:
+            if st.button(f"👉 Review {review_needed_count:,} Flagged Terms", key="btn_hero_goto_rq", use_container_width=True):
+                st.session_state.nav_radio_choice = "⚠️ Human Review Queue"
+                st.session_state.selected_view = "Human Review Queue"
+                st.rerun()
 
-    # D. Two Analytics Panels (Aligned Containers & Heights)
+    # 5. TWO PRIMARY CHARTS: Decision Distribution & Campaign Spend
     chart_col1, chart_col2 = st.columns(2)
     
     with chart_col1:
-        with st.container(border=True):
-            st.markdown(
-                "<div style='font-weight:700; font-size:1.02rem; color:#FFFFFF;'>Spend by Campaign</div>"
-                "<div style='font-size:0.8rem; color:#D1CBD5; margin-bottom:12px;'>Historical media expenditure distributed across campaigns (USD).</div>",
-                unsafe_allow_html=True
-            )
-            camp_spend_df = clean_df.groupby("campaign")["cost"].sum().reset_index()
-            camp_spend_df.columns = ["Campaign", "Spend"]
-            
-            spend_chart = alt.Chart(camp_spend_df).mark_bar(color="#8000FF", cornerRadiusEnd=4).encode(
-                x=alt.X("Spend:Q", title="Total Spend ($)", axis=alt.Axis(format="$,.0f", labelColor="#D1CBD5", titleColor="#FFFFFF", gridColor="rgba(160, 80, 200, 0.12)")),
-                y=alt.Y("Campaign:N", sort="-x", title="", axis=alt.Axis(labelColor="#FFFFFF", labelFontSize=11, labelLimit=200)),
-                tooltip=[alt.Tooltip("Campaign:N"), alt.Tooltip("Spend:Q", format="$,.2f")]
-            ).properties(height=240)
-            
-            st.altair_chart(spend_chart, use_container_width=True)
-
-    with chart_col2:
         with st.container(border=True):
             st.markdown(
                 "<div style='font-weight:700; font-size:1.02rem; color:#FFFFFF;'>Decision Distribution by Campaign</div>"
@@ -1623,52 +1260,25 @@ if current_view == "Campaign Intelligence":
             
             st.altair_chart(dist_chart, use_container_width=True)
 
-    # E. Compact Performance Section
-    diag_c1, diag_c2 = st.columns(2)
-    
-    with diag_c1:
+    with chart_col2:
         with st.container(border=True):
             st.markdown(
-                f"<div style='font-weight:700; font-size:1.02rem; color:#FFFFFF;'>Performance vs Target CPA (${target_cpa:,.2f})</div>"
-                "<div style='font-size:0.8rem; color:#D1CBD5; margin-bottom:12px;'>Campaign-level CPA efficiency benchmarked against allowable ceiling.</div>",
+                "<div style='font-weight:700; font-size:1.02rem; color:#FFFFFF;'>Spend by Campaign</div>"
+                "<div style='font-size:0.8rem; color:#D1CBD5; margin-bottom:12px;'>Historical media expenditure distributed across campaigns (USD).</div>",
                 unsafe_allow_html=True
             )
-            cpa_perf = clean_df.groupby("campaign").agg({"cost": "sum", "conversions": "sum"}).reset_index()
-            cpa_perf["Actual CPA"] = cpa_perf["cost"] / cpa_perf["conversions"].replace(0, np.nan)
-            cpa_perf["Target CPA"] = target_cpa
-            cpa_perf["CPA Variance"] = ((cpa_perf["Actual CPA"] - cpa_perf["Target CPA"]) / cpa_perf["Target CPA"])
+            camp_spend_df = clean_df.groupby("campaign")["cost"].sum().reset_index()
+            camp_spend_df.columns = ["Campaign", "Spend"]
             
-            cpa_display = cpa_perf[["campaign", "cost", "conversions", "Actual CPA", "CPA Variance"]].copy()
-            cpa_display.columns = ["Campaign", "Spend ($)", "Conversions", "Actual CPA ($)", "Variance vs Target"]
-            cpa_display["Spend ($)"] = cpa_display["Spend ($)"].apply(lambda x: f"${x:,.2f}")
-            cpa_display["Actual CPA ($)"] = cpa_display["Actual CPA ($)"].apply(lambda x: f"${x:,.2f}" if pd.notnull(x) else "—")
-            cpa_display["Variance vs Target"] = cpa_display["Variance vs Target"].apply(lambda x: f"{x:+.1%}" if pd.notnull(x) else "—")
-            st.dataframe(cpa_display, hide_index=True, use_container_width=True, height=190)
+            spend_chart = alt.Chart(camp_spend_df).mark_bar(color="#8000FF", cornerRadiusEnd=4).encode(
+                x=alt.X("Spend:Q", title="Total Spend ($)", axis=alt.Axis(format="$,.0f", labelColor="#D1CBD5", titleColor="#FFFFFF", gridColor="rgba(160, 80, 200, 0.12)")),
+                y=alt.Y("Campaign:N", sort="-x", title="", axis=alt.Axis(labelColor="#FFFFFF", labelFontSize=11, labelLimit=200)),
+                tooltip=[alt.Tooltip("Campaign:N"), alt.Tooltip("Spend:Q", format="$,.2f")]
+            ).properties(height=240)
+            
+            st.altair_chart(spend_chart, use_container_width=True)
 
-    with diag_c2:
-        with st.container(border=True):
-            st.markdown(
-                "<div style='font-weight:700; font-size:1.02rem; color:#FFFFFF;'>Top Review Reasons Breakdown</div>"
-                "<div style='font-size:0.8rem; color:#D1CBD5; margin-bottom:12px;'>Primary uncertainty rationales routing queries to Human Review.</div>",
-                unsafe_allow_html=True
-            )
-            review_reasons = res_df[res_df["needs_review"] == True]["reason"].apply(
-                lambda r: "Small-sample noise (1-2 convs)" if "Small-sample" in str(r) else
-                          ("Borderline spend bleeder" if "Borderline" in str(r) else
-                          ("Unprofitable converter" if "Unprofitable" in str(r) else
-                          ("Conflicting off-target signal" if "Conflicting" in str(r) else "Other uncertainty")))
-            ).value_counts().reset_index()
-            review_reasons.columns = ["Reason Category", "Query Count"]
-            
-            reason_chart = alt.Chart(review_reasons).mark_bar(color="#F59E0B", cornerRadiusEnd=3).encode(
-                x=alt.X("Query Count:Q", title="Queries Flagged", axis=alt.Axis(labelColor="#D1CBD5", titleColor="#FFFFFF", gridColor="rgba(160, 80, 200, 0.12)")),
-                y=alt.Y("Reason Category:N", sort="-x", title="", axis=alt.Axis(labelColor="#FFFFFF", labelFontSize=11, labelLimit=200)),
-                tooltip=["Reason Category", "Query Count"]
-            ).properties(height=180)
-            
-            st.altair_chart(reason_chart, use_container_width=True)
-
-    # F. Priority Recommendations (Curated 4 Instructive Archetypes)
+    # 6. PRIORITY SEARCH-TERM RECOMMENDATIONS
     st.markdown("<div style='height:8px;'></div>", unsafe_allow_html=True)
     st.markdown(
         "<div style='font-weight:700; font-size:1.08rem; color:#FFFFFF; margin-bottom:4px;'>Priority Search-Term Recommendations</div>"
@@ -1695,8 +1305,92 @@ if current_view == "Campaign Intelligence":
 
     st.markdown("<div style='height:12px;'></div>", unsafe_allow_html=True)
     
-    # G. Reorganized Campaign & Ad Group Performance Explorer (Dedicated Collapsible Drilldown)
-    with st.expander("📁 Campaign & Ad Group Performance Explorer (Granular Drilldown)", expanded=False):
+    # 7. EXPANDABLE ADVANCED ANALYTICS & CAMPAIGN DRILLDOWN
+    with st.expander("📊 Advanced Analytics & Campaign Drilldown", expanded=False):
+        # Financial Summary
+        st.markdown("<div style='font-weight:700; font-size:0.96rem; color:#FFFFFF; margin-bottom:8px;'>Financial Economics & Accounting Breakdown</div>", unsafe_allow_html=True)
+        fin_col1, fin_col2, fin_col3 = st.columns(3)
+        with fin_col1:
+            with st.container(border=True):
+                st.markdown(
+                    "<div>"
+                    "<div style='font-size:0.75rem; font-weight:700; color:#D1CBD5; text-transform:uppercase;'>Historical Spend on Blocked Terms</div>"
+                    f"<div style='font-size:1.35rem; font-weight:700; color:#F87171; margin-top:2px;'>${historical_blocked_spend:,.2f}</div>"
+                    "<div style='font-size:0.76rem; color:#AFA8B8;'>Potential future spend reduction by excluding off-target and bleeder queries.</div>"
+                    "</div>",
+                    unsafe_allow_html=True
+                )
+        with fin_col2:
+            with st.container(border=True):
+                st.markdown(
+                    "<div>"
+                    "<div style='font-size:0.75rem; font-weight:700; color:#D1CBD5; text-transform:uppercase;'>Attributed Conversion Value</div>"
+                    f"<div style='font-size:1.35rem; font-weight:700; color:#34D399; margin-top:2px;'>${attributed_promoted_val:,.2f}</div>"
+                    f"<div style='font-size:0.76rem; color:#AFA8B8;'>Gross value across {attributed_promoted_conv:,} conversions from promoted terms.</div>"
+                    "</div>",
+                    unsafe_allow_html=True
+                )
+        with fin_col3:
+            with st.container(border=True):
+                st.markdown(
+                    "<div>"
+                    "<div style='font-size:0.75rem; font-weight:700; color:#D1CBD5; text-transform:uppercase;'>Account Baseline CPA</div>"
+                    f"<div style='font-size:1.35rem; font-weight:700; color:#FFFFFF; margin-top:2px;'>${clean_df['cost'].sum() / max(1.0, clean_df['conversions'].sum()):,.2f}</div>"
+                    "<div style='font-size:0.76rem; color:#AFA8B8;'>Weighted account cost per loan conversion across active campaigns.</div>"
+                    "</div>",
+                    unsafe_allow_html=True
+                )
+
+        st.markdown("<div style='height:12px;'></div>", unsafe_allow_html=True)
+        
+        # Secondary Performance & Diagnostics Tables
+        diag_c1, diag_c2 = st.columns(2)
+        with diag_c1:
+            with st.container(border=True):
+                st.markdown(
+                    f"<div style='font-weight:700; font-size:0.95rem; color:#FFFFFF;'>Performance vs Target CPA (${target_cpa:,.2f})</div>"
+                    "<div style='font-size:0.78rem; color:#D1CBD5; margin-bottom:10px;'>Campaign-level CPA efficiency benchmarked against allowable ceiling.</div>",
+                    unsafe_allow_html=True
+                )
+                cpa_perf = clean_df.groupby("campaign").agg({"cost": "sum", "conversions": "sum"}).reset_index()
+                cpa_perf["Actual CPA"] = cpa_perf["cost"] / cpa_perf["conversions"].replace(0, np.nan)
+                cpa_perf["Target CPA"] = target_cpa
+                cpa_perf["CPA Variance"] = ((cpa_perf["Actual CPA"] - cpa_perf["Target CPA"]) / cpa_perf["Target CPA"])
+                
+                cpa_display = cpa_perf[["campaign", "cost", "conversions", "Actual CPA", "CPA Variance"]].copy()
+                cpa_display.columns = ["Campaign", "Spend ($)", "Conversions", "Actual CPA ($)", "Variance vs Target"]
+                cpa_display["Spend ($)"] = cpa_display["Spend ($)"].apply(lambda x: f"${x:,.2f}")
+                cpa_display["Actual CPA ($)"] = cpa_display["Actual CPA ($)"].apply(lambda x: f"${x:,.2f}" if pd.notnull(x) else "—")
+                cpa_display["Variance vs Target"] = cpa_display["Variance vs Target"].apply(lambda x: f"{x:+.1%}" if pd.notnull(x) else "—")
+                st.dataframe(cpa_display, hide_index=True, use_container_width=True, height=180)
+
+        with diag_c2:
+            with st.container(border=True):
+                st.markdown(
+                    "<div style='font-weight:700; font-size:0.95rem; color:#FFFFFF;'>Top Review Reasons Breakdown</div>"
+                    "<div style='font-size:0.78rem; color:#D1CBD5; margin-bottom:10px;'>Primary uncertainty rationales routing queries to Human Review.</div>",
+                    unsafe_allow_html=True
+                )
+                review_reasons = res_df[res_df["needs_review"] == True]["reason"].apply(
+                    lambda r: "Small-sample noise (1-2 convs)" if "Small-sample" in str(r) else
+                              ("Borderline spend bleeder" if "Borderline" in str(r) else
+                              ("Unprofitable converter" if "Unprofitable" in str(r) else
+                              ("Conflicting off-target signal" if "Conflicting" in str(r) else "Other uncertainty")))
+                ).value_counts().reset_index()
+                review_reasons.columns = ["Reason Category", "Query Count"]
+                
+                reason_chart = alt.Chart(review_reasons).mark_bar(color="#F59E0B", cornerRadiusEnd=3).encode(
+                    x=alt.X("Query Count:Q", title="Queries Flagged", axis=alt.Axis(labelColor="#D1CBD5", titleColor="#FFFFFF", gridColor="rgba(160, 80, 200, 0.12)")),
+                    y=alt.Y("Reason Category:N", sort="-x", title="", axis=alt.Axis(labelColor="#FFFFFF", labelFontSize=11, labelLimit=200)),
+                    tooltip=["Reason Category", "Query Count"]
+                ).properties(height=180)
+                
+                st.altair_chart(reason_chart, use_container_width=True)
+
+        st.markdown("<div style='height:12px;'></div>", unsafe_allow_html=True)
+        
+        # Granular Ad Group Explorer
+        st.markdown("<div style='font-weight:700; font-size:0.95rem; color:#FFFFFF; margin-bottom:4px;'>Granular Campaign & Ad Group Explorer</div>", unsafe_allow_html=True)
         ag_summary = res_df.groupby(["campaign", "ad_group"]).agg(
             total_queries=("query_text", "count"),
             clicks=("clicks", "sum"),
@@ -1713,9 +1407,9 @@ if current_view == "Campaign Intelligence":
         
         ag_filter_c1, ag_filter_c2 = st.columns([3, 2])
         with ag_filter_c1:
-            ag_search = st.text_input("🔍 Search Ad Group Name", "")
+            ag_search = st.text_input("🔍 Search Ad Group Name", "", key="ci_adv_ag_search")
         with ag_filter_c2:
-            camp_pick = st.selectbox("Filter Campaign", ["All Campaigns"] + sorted(ag_summary["campaign"].unique().tolist()))
+            camp_pick = st.selectbox("Filter Campaign", ["All Campaigns"] + sorted(ag_summary["campaign"].unique().tolist()), key="ci_adv_camp_filter")
             
         filtered_ag = ag_summary
         if ag_search:
@@ -1945,74 +1639,59 @@ elif current_view == "Intent Clusters":
                         unsafe_allow_html=True
                     )
                     
-                    st.markdown("<div style='font-size:0.78rem; font-weight:700; color:#D5A2FF; margin-bottom:4px;'>⚡ 1-Click Cluster Reconciliation (Harmonize All Variations)</div>", unsafe_allow_html=True)
-                    btn_c1, btn_c2, btn_c3 = st.columns(3)
-                    with btn_c1:
-                        if st.button(f"🚀 Harmonize: Set All to PROMOTE", key=f"btn_harm_prom_{cid}", use_container_width=True):
-                            for mq in c.get("member_queries", []):
-                                q_norm = mq["query_text"].lower().strip()
-                                st.session_state.reviewer_actions[q_norm] = {
-                                    "reviewer_action": "CLUSTER_HARMONIZATION_PROMOTE",
-                                    "final_decision": "PROMOTE",
-                                    "reviewer_notes": f"Cluster harmonization across {var_count} variants in {cid}",
-                                    "reviewer": "Human Analyst"
-                                }
-                                st.session_state.precedent_memory.record_correction(
-                                    query_text=mq["query_text"],
-                                    campaign=mq.get("campaign", "—"),
-                                    ad_group=mq.get("ad_group", "—"),
-                                    original_decision=mq.get("decision", "IGNORE"),
-                                    revised_decision="PROMOTE",
-                                    reason=f"Harmonized with intent cluster '{canonical_q}'",
-                                    reviewer="Human Analyst",
-                                    metrics={"clicks": mq.get("clicks", 0), "cost": mq.get("cost", 0.0), "conversions": mq.get("conversions", 0)}
-                                )
-                            st.toast(f"✓ Harmonized cluster '{canonical_q}' to PROMOTE across {var_count} variations!", icon="🚀")
-                            st.rerun()
-                    with btn_c2:
-                        if st.button(f"🚫 Harmonize: Set All to BLOCK", key=f"btn_harm_blk_{cid}", use_container_width=True):
-                            for mq in c.get("member_queries", []):
-                                q_norm = mq["query_text"].lower().strip()
-                                st.session_state.reviewer_actions[q_norm] = {
-                                    "reviewer_action": "CLUSTER_HARMONIZATION_BLOCK",
-                                    "final_decision": "BLOCK",
-                                    "reviewer_notes": f"Cluster harmonization across {var_count} variants in {cid}",
-                                    "reviewer": "Human Analyst"
-                                }
-                                st.session_state.precedent_memory.record_correction(
-                                    query_text=mq["query_text"],
-                                    campaign=mq.get("campaign", "—"),
-                                    ad_group=mq.get("ad_group", "—"),
-                                    original_decision=mq.get("decision", "IGNORE"),
-                                    revised_decision="BLOCK",
-                                    reason=f"Harmonized with intent cluster '{canonical_q}'",
-                                    reviewer="Human Analyst",
-                                    metrics={"clicks": mq.get("clicks", 0), "cost": mq.get("cost", 0.0), "conversions": mq.get("conversions", 0)}
-                                )
-                            st.toast(f"✓ Harmonized cluster '{canonical_q}' to BLOCK across {var_count} variations!", icon="🚫")
-                            st.rerun()
-                    with btn_c3:
-                        if st.button(f"💤 Harmonize: Set All to IGNORE", key=f"btn_harm_ign_{cid}", use_container_width=True):
-                            for mq in c.get("member_queries", []):
-                                q_norm = mq["query_text"].lower().strip()
-                                st.session_state.reviewer_actions[q_norm] = {
-                                    "reviewer_action": "CLUSTER_HARMONIZATION_IGNORE",
-                                    "final_decision": "IGNORE",
-                                    "reviewer_notes": f"Cluster harmonization across {var_count} variants in {cid}",
-                                    "reviewer": "Human Analyst"
-                                }
-                                st.session_state.precedent_memory.record_correction(
-                                    query_text=mq["query_text"],
-                                    campaign=mq.get("campaign", "—"),
-                                    ad_group=mq.get("ad_group", "—"),
-                                    original_decision=mq.get("decision", "IGNORE"),
-                                    revised_decision="IGNORE",
-                                    reason=f"Harmonized with intent cluster '{canonical_q}'",
-                                    reviewer="Human Analyst",
-                                    metrics={"clicks": mq.get("clicks", 0), "cost": mq.get("cost", 0.0), "conversions": mq.get("conversions", 0)}
-                                )
-                            st.toast(f"✓ Harmonized cluster '{canonical_q}' to IGNORE across {var_count} variations!", icon="💤")
-                            st.rerun()
+                    # Two-Step Confirmation Guardrail before Bulk Cluster Harmonization
+                    pending_harm = st.session_state.get(f"confirm_harm_{cid}")
+                    if pending_harm:
+                        st.markdown(
+                            f"<div style='background:rgba(245, 158, 11, 0.12); border:1px solid rgba(245, 158, 11, 0.45); border-radius:6px; padding:10px 14px; margin-bottom:8px;'>"
+                            f"<strong style='color:#FBBF24;'>⚠️ Confirmation Required:</strong> "
+                            f"<span style='color:#FFFFFF;'>Apply bulk decision <strong style='color:#D5A2FF;'>{pending_harm}</strong> to all <strong style='color:#FFFFFF;'>{var_count} query variations</strong> in cluster '<em>{html.escape(canonical_q)}</em>'?</span>"
+                            f"</div>",
+                            unsafe_allow_html=True
+                        )
+                        c_conf, c_cancel, _ = st.columns([1.8, 1.2, 3])
+                        with c_conf:
+                            if st.button(f"✅ Yes, Apply {pending_harm} to {var_count} Queries", key=f"btn_confirm_exec_{cid}", use_container_width=True):
+                                for mq in c.get("member_queries", []):
+                                    q_norm = mq["query_text"].lower().strip()
+                                    st.session_state.reviewer_actions[q_norm] = {
+                                        "reviewer_action": f"CLUSTER_HARMONIZATION_{pending_harm}",
+                                        "final_decision": pending_harm,
+                                        "reviewer_notes": f"Cluster harmonization across {var_count} variants in {cid}",
+                                        "reviewer": "Human Analyst"
+                                    }
+                                    st.session_state.precedent_memory.record_correction(
+                                        query_text=mq["query_text"],
+                                        campaign=mq.get("campaign", "—"),
+                                        ad_group=mq.get("ad_group", "—"),
+                                        original_decision=mq.get("decision", "IGNORE"),
+                                        revised_decision=pending_harm,
+                                        reason=f"Harmonized with intent cluster '{canonical_q}'",
+                                        reviewer="Human Analyst",
+                                        metrics={"clicks": mq.get("clicks", 0), "cost": mq.get("cost", 0.0), "conversions": mq.get("conversions", 0)}
+                                    )
+                                del st.session_state[f"confirm_harm_{cid}"]
+                                st.toast(f"✓ Harmonized cluster '{canonical_q}' to {pending_harm} across {var_count} variations!", icon="✅")
+                                st.rerun()
+                        with c_cancel:
+                            if st.button("Cancel", key=f"btn_cancel_harm_{cid}", use_container_width=True):
+                                del st.session_state[f"confirm_harm_{cid}"]
+                                st.rerun()
+                    else:
+                        st.markdown("<div style='font-size:0.78rem; font-weight:700; color:#D5A2FF; margin-bottom:4px;'>⚡ Cluster Reconciliation (Harmonize Variations)</div>", unsafe_allow_html=True)
+                        btn_c1, btn_c2, btn_c3 = st.columns(3)
+                        with btn_c1:
+                            if st.button(f"🚀 Harmonize: Set All to PROMOTE", key=f"btn_harm_prom_{cid}", use_container_width=True):
+                                st.session_state[f"confirm_harm_{cid}"] = "PROMOTE"
+                                st.rerun()
+                        with btn_c2:
+                            if st.button(f"🚫 Harmonize: Set All to BLOCK", key=f"btn_harm_blk_{cid}", use_container_width=True):
+                                st.session_state[f"confirm_harm_{cid}"] = "BLOCK"
+                                st.rerun()
+                        with btn_c3:
+                            if st.button(f"💤 Harmonize: Set All to IGNORE", key=f"btn_harm_ign_{cid}", use_container_width=True):
+                                st.session_state[f"confirm_harm_{cid}"] = "IGNORE"
+                                st.rerun()
 
                 # Member queries breakdown table
                 with st.expander(f"🔎 Inspect All {var_count} Individual Query Variations", expanded=has_conf):
@@ -2500,13 +2179,3 @@ elif current_view == "AI Search Copilot":
                 render_evidence_card(r_insp, is_review_queue=True, key_prefix="insp")
             else:
                 st.warning(f"Row #{selected_row_inspect} not found in dataset.")
-
-# =============================================================
-# FLOATING PERSONAL AI COPILOT LAUNCHER & MODAL POPUP
-# =============================================================
-if st.button("✨ Ask Personal AI Copilot", key="floating_copilot_btn", help="Open TriageIQ Personal AI Assistant"):
-    st.session_state.show_copilot = True
-    st.rerun()
-
-if st.session_state.get("show_copilot", False):
-    render_copilot_modal(res_df, clean_df, target_cpa=target_cpa)
